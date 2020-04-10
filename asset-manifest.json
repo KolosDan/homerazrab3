@@ -1,13 +1,13 @@
 {
-  "main.js": "/dating/static/js/main.c35bd3cc.chunk.js",
-  "main.js.map": "/dating/static/js/main.c35bd3cc.chunk.js.map",
-  "runtime~main.js": "/dating/static/js/runtime~main.fe51680e.js",
-  "runtime~main.js.map": "/dating/static/js/runtime~main.fe51680e.js.map",
-  "static/css/2.3a76fbd9.chunk.css": "/dating/static/css/2.3a76fbd9.chunk.css",
-  "static/js/2.fb713658.chunk.js": "/dating/static/js/2.fb713658.chunk.js",
-  "static/js/2.fb713658.chunk.js.map": "/dating/static/js/2.fb713658.chunk.js.map",
-  "index.html": "/dating/index.html",
-  "precache-manifest.f7b57d3f71510ae7da7eda0a866759c5.js": "/dating/precache-manifest.f7b57d3f71510ae7da7eda0a866759c5.js",
-  "service-worker.js": "/dating/service-worker.js",
-  "static/css/2.3a76fbd9.chunk.css.map": "/dating/static/css/2.3a76fbd9.chunk.css.map"
+  "main.js": "/homerazrab3/static/js/main.c35bd3cc.chunk.js",
+  "main.js.map": "/homerazrab3/static/js/main.c35bd3cc.chunk.js.map",
+  "runtime~main.js": "/homerazrab3/static/js/runtime~main.5ce44b85.js",
+  "runtime~main.js.map": "/homerazrab3/static/js/runtime~main.5ce44b85.js.map",
+  "static/css/2.3a76fbd9.chunk.css": "/homerazrab3/static/css/2.3a76fbd9.chunk.css",
+  "static/js/2.895949e1.chunk.js": "/homerazrab3/static/js/2.895949e1.chunk.js",
+  "static/js/2.895949e1.chunk.js.map": "/homerazrab3/static/js/2.895949e1.chunk.js.map",
+  "index.html": "/homerazrab3/index.html",
+  "precache-manifest.d1b248b563eb0e432fa1c16913476ee8.js": "/homerazrab3/precache-manifest.d1b248b563eb0e432fa1c16913476ee8.js",
+  "service-worker.js": "/homerazrab3/service-worker.js",
+  "static/css/2.3a76fbd9.chunk.css.map": "/homerazrab3/static/css/2.3a76fbd9.chunk.css.map"
 }
