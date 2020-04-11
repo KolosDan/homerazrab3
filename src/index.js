@@ -4,6 +4,7 @@ import { View, Panel, PanelHeader, Group, Cell, Epic, Tabbar, TabbarItem,
 List, Button , Avatar , PanelHeaderContent, PanelHeaderButton, PanelHeaderSimple,
 Radio, FormLayoutGroup, Select, FormLayout , Root , Textarea, Input, Checkbox, Header} from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
+import axios from 'axios';
 import Icon24Settings from '@vkontakte/icons/dist/24/settings';
 import Icon28AddOutline from '@vkontakte/icons/dist/28/add_outline';
 import Icon28Newsfeed from '@vkontakte/icons/dist/28/newsfeed';   
@@ -14,6 +15,11 @@ import Icon28SlidersOutline from '@vkontakte/icons/dist/28/sliders_outline';
 import * as connect from '@vkontakte/vkui-connect'; 
 
 let user_obj = {};
+
+const instance = axios.create({
+  headers: { 'Access-Control-Allow-Origin': "*" }
+});
+
 connect.send("VKWebAppInit", {});
 
 class Example extends React.Component {
@@ -180,17 +186,41 @@ class Example extends React.Component {
       this.state = {
         activeStory : "discover",
         sex : "men",
-        pref : ""
+        pref : "",
+        age : 18
       };
       this.handleChange = this.handleChange.bind(this);
       this.onStoryChange = this.onStoryChange.bind(this);
     }
 
-    handleChange(event) {
+    handleChange_sex(event) {
+      console.log(event.target.value);
       this.setState({sex: event.target.value});
     }
+
+    handleChange_age(event) {
+      console.log(event.target.value);
+      this.setState({age: event.target.value});
+    }
+
+
     onStoryChange (e) {
       this.setState({ activeStory: e.currentTarget.dataset.story })
+    }
+
+    register_user() {
+      instance.post('http://35.228.42.210:5000/signup', {
+        user_id: user_obj.id,
+        age: ch_id
+      })
+        .then(function (response) {
+          if (response.data.error) {
+            alert(response.data.error);
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     }
   
     render () {
@@ -213,19 +243,19 @@ class Example extends React.Component {
 
             <FormLayout>
               <FormLayoutGroup top="Введите ваш возраст">
-                <Input type="text" placeholder="18" />
+                <Input onChange={this.handleChange_age()} type="text" placeholder="18" />
               </FormLayoutGroup>
             </FormLayout>
 
             <FormLayout>
-              <Select top="Ваш гендер" placeholder="">
-                <option value="m">Мужчина Натурал</option>
-                <option value="f">Женщина Натурал</option>
-                <option value="f">Мужчина Гомосексуалист</option>
-                <option value="f">Женщина Гомосексуалист</option>
-                <option value="f">Мужчина Би</option>
-                <option value="f">Женщина Би</option>
-                <option value="f">Не бинарный</option>
+              <Select onChange={this.handleChange()} top="Ваш гендер" placeholder="">
+                <option value="male-straight">Мужчина Натурал</option>
+                <option value="female-straight">Женщина Натурал</option>
+                <option value="male-homo">Мужчина Гомосексуалист</option>
+                <option value="female-homo">Женщина Гомосексуалист</option>
+                <option value="male-bi">Мужчина Би</option>
+                <option value="female-bi">Женщина Би</option>
+                <option value="non-binary">Не бинарный</option>
               </Select>
           </FormLayout>
 
