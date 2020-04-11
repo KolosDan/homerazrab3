@@ -53,6 +53,7 @@ class Example extends React.Component {
           })
           .then(function (response) {
            response.data.result == "no" ? this.setState({register : true}) : this.setState({register : false});
+           console.log(this.state.register);
           })
           .catch(function (error) {
             console.log(error);
