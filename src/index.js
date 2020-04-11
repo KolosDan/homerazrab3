@@ -201,14 +201,13 @@ class Example extends React.Component {
     // }
 
     handleChange(e) {
-      console.log( e.currentTarget.checked);
       const { name, value } = e.currentTarget;
       console.log(name, value );
       this.setState({ [name]: value });
     }
 
     handleCheckbox(e) {
-      console.log(e)
+      console.log( e.currentTarget.checked);
       const { name, value } = e.currentTarget;
       console.log(name, value );
       if (value){
