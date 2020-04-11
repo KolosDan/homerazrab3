@@ -64,7 +64,7 @@ class Example extends React.Component {
             console.log(error);
           });
         }
-      }, 1000 );
+      }, 5000 );
     }
   
 
