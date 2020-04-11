@@ -192,6 +192,7 @@ class Example extends React.Component {
       // this.handleChange_sex = this.handleChange_sex.bind(this);
       this.handleChange = this.handleChange.bind(this);
       this.onStoryChange = this.onStoryChange.bind(this);
+      this.handleCheckbox = this.handleCheckbox.bind(this);
     }
 
     // handleChange_sex(event) {
@@ -274,13 +275,13 @@ class Example extends React.Component {
 
           <Group header={<Header mode="secondary">Ваши предпочтения</Header>}>
           <FormLayout>
-              <Checkbox name="male-straight">Мужчина Натурал</Checkbox>
-              <Checkbox name="female-straight">Женщина Натурал</Checkbox>
-              <Checkbox name="male-homo">Мужчина Гомосексуалист</Checkbox>
-              <Checkbox name="female-homo">Женщина Гомосексуалист</Checkbox>
-              <Checkbox name="male-bi">Мужчина Би</Checkbox>
-              <Checkbox name="female-bi">Женщина Би</Checkbox>
-              <Checkbox name="non-binary">Не бинарный</Checkbox>
+              <Checkbox onChange={this.handleCheckbox} name="male-straight">Мужчина Натурал</Checkbox>
+              <Checkbox onChange={this.handleCheckbox} name="female-straight">Женщина Натурал</Checkbox>
+              <Checkbox onChange={this.handleCheckbox} name="male-homo">Мужчина Гомосексуалист</Checkbox>
+              <Checkbox onChange={this.handleCheckbox} name="female-homo">Женщина Гомосексуалист</Checkbox>
+              <Checkbox onChange={this.handleCheckbox} name="male-bi">Мужчина Би</Checkbox>
+              <Checkbox onChange={this.handleCheckbox} name="female-bi">Женщина Би</Checkbox>
+              <Checkbox onChange={this.handleCheckbox} name="non-binary">Не бинарный</Checkbox>
            <Button mode="secondary" onClick={() => this.props.setIndex()} size="xl">Продолжить</Button>
           </FormLayout>
           </Group>
