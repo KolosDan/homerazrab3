@@ -14,6 +14,7 @@ import Icon28SlidersOutline from '@vkontakte/icons/dist/28/sliders_outline';
 import * as connect from '@vkontakte/vkui-connect'; 
 
 connect.send("VKWebAppInit", {});
+let user_obj = {};
 
 class Example extends React.Component {
     constructor (props) {
@@ -32,14 +33,14 @@ class Example extends React.Component {
       connect.subscribe((e) => {
         console.log(e);
         if (e.detail.type === "VKWebAppGetUserInfoResult") {
-          this.state.user_obj = e.detail.data;
+          user_obj = e.detail.data;
         }
         else if (e.detail.type === "VKWebAppAccessTokenReceived") {
           this.state.access_token = e.detail.data.access_token;
           connect.send("VKWebAppCallAPIMethod", {
             "method": "groups.get",
             "request_id": "groups.get",
-            "params": { extended: 1, "user_id": this.state.user_obj.id, "v": "5.101", filter: "groups", count: 1000, "access_token": this.state.access_token }
+            "params": { extended: 1, "user_id": user_obj.id, "v": "5.101", filter: "groups", count: 1000, "access_token": this.state.access_token }
           });
         }
         else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
@@ -194,9 +195,9 @@ class Example extends React.Component {
             right={<PanelHeaderButton></PanelHeaderButton>}
           >
             <PanelHeaderContent
-              before={<Avatar size={48} src="https://sun9-5.userapi.com/c834100/v834100961/4f8f1/hjsBzq433co.jpg?ava=1" />}
+              before={<Avatar size={48} src={user_obj.data.photo_100} />}
             >
-              Лох Пидр
+              {user_obj.data.first_name} {user_obj.data.last_name}
             </PanelHeaderContent>
           </PanelHeaderSimple>
 
