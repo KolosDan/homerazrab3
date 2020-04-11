@@ -22,7 +22,8 @@ class Example extends React.Component {
       this.state = {
         activeStory: 'feed',  
         access_token : "",
-        register : true
+        register : true,
+        user_obj : {}
       };
       this.onStoryChange = this.onStoryChange.bind(this);
     }
@@ -30,7 +31,22 @@ class Example extends React.Component {
     componentDidMount() {
       connect.subscribe((e) => {
         console.log(e);
-        
+        if (e.detail.type === "VKWebAppGetUserInfoResult") {
+          this.state.user_obj = e.detail.data;
+        }
+        else if (e.detail.type === "VKWebAppAccessTokenReceived") {
+          this.state.access_token = e.detail.data.access_token;
+          connect.send("VKWebAppCallAPIMethod", {
+            "method": "groups.get",
+            "request_id": "groups.get",
+            "params": { extended: 1, "user_id": this.state.user_obj.id, "v": "5.101", filter: "groups", count: 1000, "access_token": this.state.access_token }
+          });
+        }
+        else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
+          if (e.detail.data.request_id === "groups.get") {
+            console.log(e.detail.data.response.items);
+          }
+        }
       })
       connect.send("VKWebAppGetUserInfo", {});
       connect.send("VKWebAppGetAuthToken", { "app_id": 7403106, "scope": "groups,friends" });
