@@ -34,24 +34,10 @@ class Example extends React.Component {
         register : true
       };
       this.onStoryChange = this.onStoryChange.bind(this);
-      this.check_user = this.check_user.bind(this);
     }
     
     onStoryChange (e) {
       this.setState({ activeStory: e.currentTarget.dataset.story })
-    }
-
-
-    check_user() {
-        instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/get_user', {
-          user_id: user_obj.id,
-        })
-        .then(function (response) {
-         console.log(response)
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
     }
 
     componentDidMount() {
@@ -62,6 +48,18 @@ class Example extends React.Component {
           user_obj = e.detail.data;
           console.log(user_obj);
           this.setState({ready : true});
+
+          instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/get_user', {
+            user_id: user_obj.id,
+          })
+          .then(function (response) {
+           console.log(response.data.error)
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+
+
         }
         else if (e.detail.type === "VKWebAppAccessTokenReceived") {
           this.state.access_token = e.detail.data.access_token;
