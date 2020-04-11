@@ -207,6 +207,7 @@ class Example extends React.Component {
     }
 
     handleCheckbox(e) {
+      console.log(e)
       const { name, value } = e.currentTarget;
       console.log(name, value );
       if (value){
