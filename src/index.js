@@ -15,8 +15,6 @@ import * as connect from '@vkontakte/vkui-connect';
 
 let user_obj = {};
 
-connect.send("VKWebAppInit", {});
-
 class Example extends React.Component {
     constructor (props) {
       super(props);
@@ -32,7 +30,7 @@ class Example extends React.Component {
     }
 
     componentDidMount() {
-
+      connect.send("VKWebAppInit", {});
       connect.subscribe((e) => {
         console.log(e);
         if (e.detail.type === "VKWebAppGetUserInfoResult") {
@@ -65,8 +63,9 @@ class Example extends React.Component {
   
     render () {
       if (this.state.ready){
-
+        console.log(this.state.ready);
         if(this.state.register) { 
+          console.log(this.state.ready);
           return (<RegisterForm setIndex={i => this.setState({register: false})} />)
         } else { 
           return (
