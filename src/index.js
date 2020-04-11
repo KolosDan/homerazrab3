@@ -211,7 +211,7 @@ class Example extends React.Component {
     register_user() {
       instance.post('http://35.228.42.210:5000/signup', {
         user_id: user_obj.id,
-        age: ch_id
+        age: ""
       })
         .then(function (response) {
           if (response.data.error) {
