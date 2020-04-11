@@ -200,8 +200,8 @@ class Example extends React.Component {
     }
 
     handleChange_age(event) {
-      console.log(event.target.value);
-      this.setState({age: event.target.value});
+      console.log("age");
+      // this.setState({age: event.target.value});
     }
 
 
