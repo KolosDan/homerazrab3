@@ -52,7 +52,7 @@ class Example extends React.Component {
             user_id: user_obj.id,
           })
           .then(function (response) {
-           console.log(response.data.result)
+           response.data.result == "no" ? this.setState({register : true}) : this.setState({register : false});
           })
           .catch(function (error) {
             console.log(error);
