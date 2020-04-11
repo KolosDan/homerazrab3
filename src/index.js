@@ -261,13 +261,13 @@ class Example extends React.Component {
 
           <Group header={<Header mode="secondary">Ваши предпочтения</Header>}>
           <FormLayout>
-              <Checkbox>Мужчина Натурал</Checkbox>
-              <Checkbox>Женщина Натурал</Checkbox>
-              <Checkbox>Мужчина Гомосексуалист</Checkbox>
-              <Checkbox>Женщина Гомосексуалист</Checkbox>
-              <Checkbox>Мужчина Би</Checkbox>
-              <Checkbox>Женщина Би</Checkbox>
-              <Checkbox>Не бинарный</Checkbox>
+              <Checkbox value="male-straight">Мужчина Натурал</Checkbox>
+              <Checkbox value="female-straight">Женщина Натурал</Checkbox>
+              <Checkbox value="male-homo">Мужчина Гомосексуалист</Checkbox>
+              <Checkbox value="female-homo">Женщина Гомосексуалист</Checkbox>
+              <Checkbox value="male-bi">Мужчина Би</Checkbox>
+              <Checkbox value="female-bi">Женщина Би</Checkbox>
+              <Checkbox value="non-binary">Не бинарный</Checkbox>
            <Button mode="secondary" onClick={() => this.props.setIndex()} size="xl">Продолжить</Button>
           </FormLayout>
           </Group>
