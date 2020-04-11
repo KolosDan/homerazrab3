@@ -16,6 +16,7 @@ import * as connect from '@vkontakte/vkui-connect';
 
 let user_obj = {};
 let user_groups = [];
+let register_global = false;
 
 const instance = axios.create({
   headers: { 'Access-Control-Allow-Origin': "*" , "X-Requested-With" : "XMLHttpRequest"}
@@ -40,17 +41,9 @@ class Example extends React.Component {
       this.setState({ activeStory: e.currentTarget.dataset.story })
     }
 
-    componentDidMount() {
-      connect.subscribe((e) => {
-        console.log(e);
-        
-        if (e.detail.type === "VKWebAppGetUserInfoResult") {
-          user_obj = e.detail.data;
-          console.log(user_obj);
-          this.setState({register : true})
-          this.setState({ready : true});
-          console.log(this.state.register);
-
+    getUser() {
+      setInterval( () => {
+        if(register_global){
           instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/get_user', {
             user_id: user_obj.id,
           })
@@ -58,16 +51,31 @@ class Example extends React.Component {
             console.log(response.data.result)
            if (response.data.result == "no"){
              this.setState({register : true})
+             break;
            }
            else {
-              this.setState({register : false})
+            this.setState({register : false});
+            break;
           };
           })
           .catch(function (error) {
             console.log(error);
           });
+        }
+      }, 50 );
+    }
+  
 
-
+    componentDidMount() {
+      connect.subscribe((e) => {
+        console.log(e);
+        
+        if (e.detail.type === "VKWebAppGetUserInfoResult") {
+          this.getUser();
+          user_obj = e.detail.data;
+          console.log(user_obj);
+          this.setState({ready : true});
+          register_global = true;
         }
         else if (e.detail.type === "VKWebAppAccessTokenReceived") {
           this.state.access_token = e.detail.data.access_token;
