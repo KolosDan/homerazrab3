@@ -217,17 +217,24 @@ class Example extends React.Component {
               </FormLayoutGroup>
             </FormLayout>
 
-          <FormLayoutGroup top="Пол">
-            <Radio name="sex" onChange={this.handleChange} value={"men"}>Мужской</Radio>
-            <Radio name="sex" onChange={this.handleChange} value={"woman"}>Женский</Radio>
-          </FormLayoutGroup>
+          <Select top="" placeholder="">
+            <option value="m">Мужчина Натурал</option>
+            <option value="f">Женщина Натурал</option>
+            <option value="f">Мужчина Гомосексуалист</option>
+            <option value="f">Женщина Гомосексуалист</option>
+            <option value="f">Мужчина Би</option>
+            <option value="f">Женщина Би</option>
+            <option value="f">Не бинарный</option>
+          </Select>
        
           <FormLayout>
-          <Select top="Предпочитамый пол" placeholder="">
-            <option value="m">Только мужской</option>
-            <option value="f">Только женский</option>
-            <option value="f">Мужской и женский</option>
-          </Select>
+              <Checkbox>Мужчина Натурал</Checkbox>
+              <Checkbox>Женщина Натурал</Checkbox>
+              <Checkbox>Мужчина Гомосексуалист</Checkbox>
+              <Checkbox>Женщина Гомосексуалист</Checkbox>
+              <Checkbox>Мужчина Би</Checkbox>
+              <Checkbox>Женщина Би</Checkbox>
+              <Checkbox>Не бинарный</Checkbox>
            <Button mode="secondary" onClick={() => this.props.setIndex()} size="xl">Продолжить</Button>
           </FormLayout>
         </Group>
