@@ -223,7 +223,7 @@ class Example extends React.Component {
     }
 
     register_user() {
-      instance.post('https://cors-anywhere.herokuapp.com/https://35.228.42.210:5000/signup', {
+      instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/signup', {
         user_id: user_obj.id,
         age: this.state.age,
         geo : user_obj.city.title,
