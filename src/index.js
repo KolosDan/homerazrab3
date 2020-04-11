@@ -52,7 +52,7 @@ class Example extends React.Component {
             user_id: user_obj.id,
           })
           .then(function (response) {
-           console.log(response.data.error)
+           console.log(response.data.result)
           })
           .catch(function (error) {
             console.log(error);
