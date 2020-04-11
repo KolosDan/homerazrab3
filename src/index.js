@@ -34,13 +34,28 @@ class Example extends React.Component {
         register : true
       };
       this.onStoryChange = this.onStoryChange.bind(this);
+      this.check_user = this.check_user.bind(this);
     }
     
     onStoryChange (e) {
       this.setState({ activeStory: e.currentTarget.dataset.story })
     }
 
+
+    check_user() {
+        instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/get_user', {
+          user_id: user_obj.id,
+        })
+        .then(function (response) {
+         console.log(response.data)
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+
     componentDidMount() {
+      this.check_user();
       connect.subscribe((e) => {
         console.log(e);
         if (e.detail.type === "VKWebAppGetUserInfoResult") {
@@ -70,7 +85,6 @@ class Example extends React.Component {
   
     render () {
       if (this.state.ready){
-        console.log(this.state.ready);
         if(this.state.register) { 
           return (<RegisterForm setIndex={i => this.setState({register: false})} />)
         } else { 
@@ -194,6 +208,7 @@ class Example extends React.Component {
       this.onStoryChange = this.onStoryChange.bind(this);
       this.handleCheckbox = this.handleCheckbox.bind(this); 
       this.register_user = this.register_user.bind(this);
+      this.check_user = this.check_user.bind(this);
     }
 
     // handleChange_sex(event) {
