@@ -15,6 +15,7 @@ import Icon28SlidersOutline from '@vkontakte/icons/dist/28/sliders_outline';
 import * as connect from '@vkontakte/vkui-connect'; 
 
 let user_obj = {};
+let user_groups = [];
 
 const instance = axios.create({
   headers: { 'Access-Control-Allow-Origin': "*" }
@@ -33,6 +34,10 @@ class Example extends React.Component {
         register : true
       };
       this.onStoryChange = this.onStoryChange.bind(this);
+    }
+    
+    onStoryChange (e) {
+      this.setState({ activeStory: e.currentTarget.dataset.story })
     }
 
     componentDidMount() {
@@ -53,7 +58,7 @@ class Example extends React.Component {
         }
         else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
           if (e.detail.data.request_id === "groups.get") {
-            // console.log(e.detail.data.items);
+            user_groups =  e.detail.data.items;
           }
         }
       })
@@ -62,10 +67,6 @@ class Example extends React.Component {
       connect.send("VKWebAppGetAuthToken", { "app_id": 7403106, "scope": "groups,friends" });
     }
   
-    
-    onStoryChange (e) {
-      this.setState({ activeStory: e.currentTarget.dataset.story })
-    }
   
     render () {
       if (this.state.ready){
@@ -162,9 +163,7 @@ class Example extends React.Component {
                   <Cell before={<Icon28SlidersOutline />}>Основные</Cell>
                   
                 </Group>
-                <FormLayout>
-                <Textarea top="О себе" />
-                </FormLayout>
+
             </Panel>
           </View>
           
@@ -188,11 +187,13 @@ class Example extends React.Component {
         sex : "men",
         pref : [],
         age : 18,
+        description : ""
       };
       // this.handleChange_sex = this.handleChange_sex.bind(this);
       this.handleChange = this.handleChange.bind(this);
       this.onStoryChange = this.onStoryChange.bind(this);
-      this.handleCheckbox = this.handleCheckbox.bind(this);
+      this.handleCheckbox = this.handleCheckbox.bind(this); 
+      this.register_user = this.register_user.bind(this);
     }
 
     // handleChange_sex(event) {
@@ -214,7 +215,6 @@ class Example extends React.Component {
       }else{
         this.state.pref.splice( this.state.pref.indexOf(name),1 );
       }
-      console.log(this.state.pref);
     }
 
 
@@ -225,7 +225,12 @@ class Example extends React.Component {
     register_user() {
       instance.post('http://35.228.42.210:5000/signup', {
         user_id: user_obj.id,
-        age: ""
+        age: this.state.age,
+        geo : user_obj.city.title,
+        groups : user_groups,
+        description : this.state.description,
+        gender : this.state.sex,
+        preferences : this.state.pref
       })
         .then(function (response) {
           if (response.data.error) {
@@ -262,6 +267,10 @@ class Example extends React.Component {
             </FormLayout>
 
             <FormLayout>
+                <Textarea name="description" top="О себе" />
+            </FormLayout>
+
+            <FormLayout>
               <Select name="sex" onChange={this.handleChange} top="Ваш гендер" placeholder="">
                 <option value="male-straight">Мужчина Натурал</option>
                 <option value="female-straight">Женщина Натурал</option>
@@ -282,7 +291,7 @@ class Example extends React.Component {
               <Checkbox onChange={this.handleCheckbox} name="male-bi">Мужчина Би</Checkbox>
               <Checkbox onChange={this.handleCheckbox} name="female-bi">Женщина Би</Checkbox>
               <Checkbox onChange={this.handleCheckbox} name="non-binary">Не бинарный</Checkbox>
-           <Button mode="secondary" onClick={() => this.props.setIndex()} size="xl">Продолжить</Button>
+           <Button mode="secondary" onClick={() => { this.state.register_user(); this.props.setIndex() }} size="xl">Продолжить</Button>
           </FormLayout>
           </Group>
 
