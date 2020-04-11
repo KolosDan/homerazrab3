@@ -53,7 +53,7 @@ class Example extends React.Component {
           connect.send("VKWebAppCallAPIMethod", {
             "method": "groups.get",
             "request_id": "groups.get",
-            "params": { extended: 1, "user_id": user_obj.id, "v": "5.101", filter: "groups", count: 1000, "access_token": this.state.access_token }
+            "params": { extended: 1, "user_id": user_obj.id, "v": "5.101", filter: "groups", fields : "activity", count: 1000, "access_token": this.state.access_token }
           });
         }
         else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
