@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { View, Panel, PanelHeader, Group, Cell, Epic, Tabbar, TabbarItem,
 List, Button , Avatar , PanelHeaderContent, PanelHeaderButton, PanelHeaderSimple,
-Radio, FormLayoutGroup, Select, FormLayout , Root , Textarea, Input} from '@vkontakte/vkui';
+Radio, FormLayoutGroup, Select, FormLayout , Root , Textarea, Input, Checkbox} from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 import Icon24Settings from '@vkontakte/icons/dist/24/settings';
 import Icon28AddOutline from '@vkontakte/icons/dist/28/add_outline';
