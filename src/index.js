@@ -217,7 +217,7 @@ class Example extends React.Component {
               </FormLayoutGroup>
             </FormLayout>
 
-          <Select top="" placeholder="">
+          <Select top="Ваш гендер" placeholder="">
             <option value="m">Мужчина Натурал</option>
             <option value="f">Женщина Натурал</option>
             <option value="f">Мужчина Гомосексуалист</option>
@@ -226,7 +226,8 @@ class Example extends React.Component {
             <option value="f">Женщина Би</option>
             <option value="f">Не бинарный</option>
           </Select>
-       
+
+          <Group header={<Header mode="secondary">Ваши предпочтения</Header>}>
           <FormLayout>
               <Checkbox>Мужчина Натурал</Checkbox>
               <Checkbox>Женщина Натурал</Checkbox>
@@ -237,6 +238,8 @@ class Example extends React.Component {
               <Checkbox>Не бинарный</Checkbox>
            <Button mode="secondary" onClick={() => this.props.setIndex()} size="xl">Продолжить</Button>
           </FormLayout>
+          </Group>
+
         </Group>
        </Panel>
     </View>
