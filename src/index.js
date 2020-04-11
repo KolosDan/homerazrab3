@@ -42,7 +42,7 @@ class Example extends React.Component {
     }
 
     getUser() {
-      setInterval( () => {
+      let interval = setInterval( () => {
         if(register_global){
           instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/get_user', {
             user_id: user_obj.id,
@@ -51,11 +51,11 @@ class Example extends React.Component {
             console.log(response.data.result)
            if (response.data.result == "no"){
              this.setState({register : true})
-             return;
+             clearInterval(interval);
            }
            else {
             this.setState({register : false});
-            return;
+            clearInterval(interval);
           };
           })
           .catch(function (error) {
