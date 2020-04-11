@@ -14,6 +14,7 @@ import Icon28SlidersOutline from '@vkontakte/icons/dist/28/sliders_outline';
 import * as connect from '@vkontakte/vkui-connect'; 
 
 let user_obj = {};
+connect.send("VKWebAppInit", {});
 
 class Example extends React.Component {
     constructor (props) {
@@ -30,7 +31,6 @@ class Example extends React.Component {
     }
 
     componentDidMount() {
-      connect.send("VKWebAppInit", {});
       connect.subscribe((e) => {
         console.log(e);
         if (e.detail.type === "VKWebAppGetUserInfoResult") {
@@ -165,8 +165,11 @@ class Example extends React.Component {
           
         </Epic>
       )
-      }
-    } 
+    }
+    
+    } else{
+      return <div />
+    }
   }
 }
 
