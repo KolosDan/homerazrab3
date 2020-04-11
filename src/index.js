@@ -194,14 +194,15 @@ class Example extends React.Component {
       this.onStoryChange = this.onStoryChange.bind(this);
     }
 
-    handleChange_sex(event) {
-      console.log(event.target.value);
-      this.setState({sex: event.target.value});
-    }
+    // handleChange_sex(event) {
+    //   // console.log(event.target.value);
+    //   // this.setState({sex: event.target.value});
+    // }
 
-    handleChange_age(event) {
-      console.log("age");
-      // this.setState({age: event.target.value});
+    handleChange_age(e) {
+      console.log(e);
+      const { name, value } = e.currentTarget;
+      this.setState({ [name]: value });
     }
 
 
@@ -249,7 +250,7 @@ class Example extends React.Component {
             </FormLayout>
 
             <FormLayout>
-              <Select onChange={this.handleChange_sex()} top="Ваш гендер" placeholder="">
+              <Select onChange={this.handleChange_age()} top="Ваш гендер" placeholder="">
                 <option value="male-straight">Мужчина Натурал</option>
                 <option value="female-straight">Женщина Натурал</option>
                 <option value="male-homo">Мужчина Гомосексуалист</option>
