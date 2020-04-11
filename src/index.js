@@ -46,23 +46,25 @@ class Example extends React.Component {
         if (e.detail.type === "VKWebAppGetUserInfoResult") {
           user_obj = e.detail.data;
           console.log(user_obj);
+          this.setState({register : true})
           this.setState({ready : true});
+          console.log(this.state.register);
 
-          instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/get_user', {
-            user_id: user_obj.id,
-          })
-          .then(function (response) {
-            console.log(response.data.result)
-           if (response.data.result == "no"){
-            this.setState({register : true})
-            }else {
-              this.setState({register : false})
-            };
-           console.log(this.state.register);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+          // instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/get_user', {
+          //   user_id: user_obj.id,
+          // })
+          // .then(function (response) {
+          //   console.log(response.data.result)
+          //  if (response.data.result == "no"){
+          //   this.setState({register : true})
+          //   }else {
+          //     this.setState({register : false})
+          //   };
+          //  console.log(this.state.register);
+          // })
+          // .catch(function (error) {
+          //   console.log(error);
+          // });
 
 
         }
