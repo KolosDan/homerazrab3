@@ -189,7 +189,7 @@ class Example extends React.Component {
         pref : "",
         age : 18
       };
-      this.handleChange_sex = this.handleChange_sex.bind(this);
+      // this.handleChange_sex = this.handleChange_sex.bind(this);
       this.handleChange_age = this.handleChange_age.bind(this);
       this.onStoryChange = this.onStoryChange.bind(this);
     }
