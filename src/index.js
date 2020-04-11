@@ -13,8 +13,29 @@ import Icon28UserOutline from '@vkontakte/icons/dist/28/user_outline';
 import Icon28SlidersOutline from '@vkontakte/icons/dist/28/sliders_outline';
 import * as connect from '@vkontakte/vkui-connect'; 
 
-connect.send("VKWebAppInit", {});
 let user_obj = {};
+
+connect.send("VKWebAppInit", {});
+
+connect.subscribe((e) => {
+  console.log(e);
+  if (e.detail.type === "VKWebAppGetUserInfoResult") {
+    user_obj = e.detail.data;
+  }
+  else if (e.detail.type === "VKWebAppAccessTokenReceived") {
+    this.state.access_token = e.detail.data.access_token;
+    connect.send("VKWebAppCallAPIMethod", {
+      "method": "groups.get",
+      "request_id": "groups.get",
+      "params": { extended: 1, "user_id": user_obj.id, "v": "5.101", filter: "groups", count: 1000, "access_token": this.state.access_token }
+    });
+  }
+  else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
+    if (e.detail.data.request_id === "groups.get") {
+      console.log(e.detail.data.items);
+    }
+  }
+})
 
 class Example extends React.Component {
     constructor (props) {
@@ -30,25 +51,6 @@ class Example extends React.Component {
     }
 
     componentDidMount() {
-      connect.subscribe((e) => {
-        console.log(e);
-        if (e.detail.type === "VKWebAppGetUserInfoResult") {
-          user_obj = e.detail.data;
-        }
-        else if (e.detail.type === "VKWebAppAccessTokenReceived") {
-          this.state.access_token = e.detail.data.access_token;
-          connect.send("VKWebAppCallAPIMethod", {
-            "method": "groups.get",
-            "request_id": "groups.get",
-            "params": { extended: 1, "user_id": user_obj.id, "v": "5.101", filter: "groups", count: 1000, "access_token": this.state.access_token }
-          });
-        }
-        else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
-          if (e.detail.data.request_id === "groups.get") {
-            console.log(e.detail.data.items);
-          }
-        }
-      })
       connect.send("VKWebAppGetUserInfo", {});
       connect.send("VKWebAppGetAuthToken", { "app_id": 7403106, "scope": "groups,friends" });
     }
