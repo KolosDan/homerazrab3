@@ -22,7 +22,7 @@ class Example extends React.Component {
       super(props);
   
       this.state = {
-        ready = false,
+        ready : false,
         activeStory: 'feed', 
         access_token : "",
         register : true,
