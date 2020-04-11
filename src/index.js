@@ -58,7 +58,8 @@ class Example extends React.Component {
         }
         else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
           if (e.detail.data.request_id === "groups.get") {
-            user_groups =  e.detail.data.items;
+            user_groups = e.detail.data.items;
+            console.log("GROPUS" , user_groups)
           }
         }
       })
@@ -223,6 +224,7 @@ class Example extends React.Component {
     }
 
     register_user() {
+      console.log(user_groups)
       instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/signup', {
         user_id: user_obj.id,
         age: this.state.age,
@@ -267,7 +269,7 @@ class Example extends React.Component {
             </FormLayout>
 
             <FormLayout>
-                <Textarea name="description" top="О себе" />
+                <Textarea onChange={this.handleChange} name="description" top="О себе" />
             </FormLayout>
 
             <FormLayout>
