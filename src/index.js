@@ -141,9 +141,9 @@ class Example extends React.Component {
                   right={<PanelHeaderButton></PanelHeaderButton>}
                 >
                 <PanelHeaderContent
-                  before={<Avatar size={48} src={user_obj.data.photo_100} />}
+                  before={<Avatar size={48} src={user_obj.photo_100} />}
                 >
-                  {user_obj.data.first_name} {user_obj.data.last_name}
+                  {user_obj.first_name} {user_obj.last_name}
                   </PanelHeaderContent>
                 </PanelHeaderSimple>
 
@@ -203,9 +203,9 @@ class Example extends React.Component {
             right={<PanelHeaderButton></PanelHeaderButton>}
           >
             <PanelHeaderContent
-              before={<Avatar size={48} src={user_obj.data.photo_100} />}
+              before={<Avatar size={48} src={user_obj.photo_100} />}
             >
-              {user_obj.data.first_name} {user_obj.data.last_name}
+              {user_obj.first_name} {user_obj.last_name}
             </PanelHeaderContent>
           </PanelHeaderSimple>
 
