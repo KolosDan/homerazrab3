@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { View, Panel, PanelHeader, Group, Cell, Epic, Tabbar, TabbarItem,
 List, Button , Avatar , PanelHeaderContent, PanelHeaderButton, PanelHeaderSimple,
-Radio, FormLayoutGroup, Select, FormLayout , Root , Textarea} from '@vkontakte/vkui';
+Radio, FormLayoutGroup, Select, FormLayout , Root , Textarea, Input} from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 import Icon24Settings from '@vkontakte/icons/dist/24/settings';
 import Icon28AddOutline from '@vkontakte/icons/dist/28/add_outline';
@@ -23,8 +23,7 @@ class Example extends React.Component {
         activeStory: 'feed',  
         access_token : "",
         register : true,
-        user_obj : {},
-        user_age : 0
+        user_obj : {}
       };
       this.onStoryChange = this.onStoryChange.bind(this);
     }
@@ -34,9 +33,6 @@ class Example extends React.Component {
         console.log(e);
         if (e.detail.type === "VKWebAppGetUserInfoResult") {
           this.state.user_obj = e.detail.data;
-          console.log(e.detail.data.bdate);
-          this.setState({user_age : parseInt(( Date.now() - Date.parse(e.detail.data.bdate)) / 31536000000) });
-          console.log(this.state.user_age);
         }
         else if (e.detail.type === "VKWebAppAccessTokenReceived") {
           this.state.access_token = e.detail.data.access_token;
@@ -48,7 +44,7 @@ class Example extends React.Component {
         }
         else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
           if (e.detail.data.request_id === "groups.get") {
-            console.log(e.detail.data.response.items);
+            console.log(e.detail.data.items);
           }
         }
       })
@@ -205,6 +201,13 @@ class Example extends React.Component {
           </PanelHeaderSimple>
 
         <Group>
+
+            <FormLayout>
+              <FormLayoutGroup top="Введите ваш возраст">
+                <Input type="text" placeholder="18" />
+              </FormLayoutGroup>
+            </FormLayout>
+
           <FormLayoutGroup top="Пол">
             <Radio name="sex" onChange={this.handleChange} value={"men"}>Мужской</Radio>
             <Radio name="sex" onChange={this.handleChange} value={"woman"}>Женский</Radio>
