@@ -208,7 +208,6 @@ class Example extends React.Component {
       this.onStoryChange = this.onStoryChange.bind(this);
       this.handleCheckbox = this.handleCheckbox.bind(this); 
       this.register_user = this.register_user.bind(this);
-      this.check_user = this.check_user.bind(this);
     }
 
     // handleChange_sex(event) {
