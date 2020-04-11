@@ -24,8 +24,7 @@ class Example extends React.Component {
         ready : false,
         activeStory: 'feed', 
         access_token : "",
-        register : true,
-        user_obj : {}
+        register : true
       };
       this.onStoryChange = this.onStoryChange.bind(this);
     }
@@ -35,6 +34,7 @@ class Example extends React.Component {
         console.log(e);
         if (e.detail.type === "VKWebAppGetUserInfoResult") {
           user_obj = e.detail.data;
+          console.log(user_obj);
           this.setState({ready : true});
         }
         else if (e.detail.type === "VKWebAppAccessTokenReceived") {
@@ -47,7 +47,7 @@ class Example extends React.Component {
         }
         else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
           if (e.detail.data.request_id === "groups.get") {
-            console.log(e.detail.data.items);
+            // console.log(e.detail.data.items);
           }
         }
       })
@@ -65,7 +65,6 @@ class Example extends React.Component {
       if (this.state.ready){
         console.log(this.state.ready);
         if(this.state.register) { 
-          console.log(this.state.ready);
           return (<RegisterForm setIndex={i => this.setState({register: false})} />)
         } else { 
           return (
@@ -189,7 +188,6 @@ class Example extends React.Component {
 
     handleChange(event) {
       this.setState({sex: event.target.value});
-      console.log(event.target.value);
     }
     onStoryChange (e) {
       this.setState({ activeStory: e.currentTarget.dataset.story })
