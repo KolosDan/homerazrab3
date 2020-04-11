@@ -207,10 +207,9 @@ class Example extends React.Component {
     }
 
     handleCheckbox(e) {
-      console.log( e.currentTarget.checked);
       const { name, value } = e.currentTarget;
       console.log(name, value );
-      if (value){
+      if (e.currentTarget.checked){
         this.state.pref.push(name);
       }else{
         this.state.pref.pop( this.state.pref.indexOf(name) );
