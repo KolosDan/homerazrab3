@@ -41,7 +41,6 @@ class Example extends React.Component {
     }
 
     componentDidMount() {
-      this.check_user();
       connect.subscribe((e) => {
         console.log(e);
         if (e.detail.type === "VKWebAppGetUserInfoResult") {
