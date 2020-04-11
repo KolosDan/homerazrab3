@@ -212,7 +212,7 @@ class Example extends React.Component {
       if (value){
         this.state.pref.push(name);
       }else{
-        this.state.pref.remove(name);
+        this.state.pref.pop( this.state.pref.indexOf(name) );
       }
       console.log(this.state.pref);
     }
