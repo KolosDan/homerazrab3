@@ -34,7 +34,8 @@ class Example extends React.Component {
         console.log(e);
         if (e.detail.type === "VKWebAppGetUserInfoResult") {
           this.state.user_obj = e.detail.data;
-          this.setState({user_age : parseInt(( Date.now() - Date.parse(e.detail.data.bdate)) / 31536000000)});
+          console.log(e.detail.data.bdate);
+          this.setState({user_age : parseInt(( Date.now() - Date.parse(e.detail.data.bdate)) / 31536000000) });
           console.log(this.state.user_age);
         }
         else if (e.detail.type === "VKWebAppAccessTokenReceived") {
