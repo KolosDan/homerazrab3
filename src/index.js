@@ -34,6 +34,8 @@ class Example extends React.Component {
         console.log(e);
         if (e.detail.type === "VKWebAppGetUserInfoResult") {
           this.state.user_obj = e.detail.data;
+          this.setState({user_age : parseInt(( Date.now() - Date.parse(e.detail.data.bdate)) / 31536000000)});
+          console.log(this.state.user_age);
         }
         else if (e.detail.type === "VKWebAppAccessTokenReceived") {
           this.state.access_token = e.detail.data.access_token;
@@ -46,8 +48,6 @@ class Example extends React.Component {
         else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
           if (e.detail.data.request_id === "groups.get") {
             console.log(e.detail.data.response.items);
-            this.setState({user_age : parseInt(( Date.now() - Date.parse(e.detail.data.bdate)) / 31536000000)});
-            console.log(this.state.user_age);
           }
         }
       })
