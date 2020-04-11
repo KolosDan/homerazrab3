@@ -47,7 +47,7 @@ class Example extends React.Component {
           if (e.detail.data.request_id === "groups.get") {
             console.log(e.detail.data.response.items);
             this.setState({user_age : parseInt(( Date.now() - Date.parse(e.detail.data.bdate)) / 31536000000)});
-            console.log(user_age);
+            console.log(this.state.user_age);
           }
         }
       })
