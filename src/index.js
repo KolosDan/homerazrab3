@@ -245,12 +245,12 @@ class Example extends React.Component {
 
             <FormLayout>
               <FormLayoutGroup top="Введите ваш возраст">
-                <Input onChange={this.handleChange_age()} type="text" placeholder="18" />
+                <Input onChange={this.handleChange_age} type="text" placeholder="18" />
               </FormLayoutGroup>
             </FormLayout>
 
             <FormLayout>
-              <Select onChange={this.handleChange_age()} top="Ваш гендер" placeholder="">
+              <Select onChange={this.handleChange_age} top="Ваш гендер" placeholder="">
                 <option value="male-straight">Мужчина Натурал</option>
                 <option value="female-straight">Женщина Натурал</option>
                 <option value="male-homo">Мужчина Гомосексуалист</option>
