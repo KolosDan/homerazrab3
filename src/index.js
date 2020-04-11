@@ -51,11 +51,11 @@ class Example extends React.Component {
             console.log(response.data.result)
            if (response.data.result == "no"){
              this.setState({register : true})
-             break;
+             return;
            }
            else {
             this.setState({register : false});
-            break;
+            return;
           };
           })
           .catch(function (error) {
