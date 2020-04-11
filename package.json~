@@ -1,14 +1,11 @@
 {
-  "homepage": "https://kolosdan.github.io/homerazrab3",
   "name": "100k",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "cross-env HOST=0.0.0.0 PORT=8080 react-scripts start",
-    "build": "react-scripts build",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "build": "react-scripts build"
   },
   "keywords": [],
   "author": "",

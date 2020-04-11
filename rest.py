@@ -26,12 +26,14 @@ def exception_handler(func):
 def signup():
     '''POST. Request Data:
     - user_id: int
+    - age: int
+    - geo: str
     - groups: []group (https://vk.com/dev/groups.get extended=1, fields=description ['items'])
     - description: str
     - gender: str (male-straight, female-straight, male-homo, female-homo, male-bi, female-bi, non-binary)
     - preferences: str[] (male-straight, female-straight, male-homo, female-homo, male-bi, female-bi, non-binary)'''
     
-    args = {"user_id", "groups", "description", "gender", "preferences"}
+    args = {"user_id", "age", "geo", "groups", "description", "gender", "preferences"}
     request_data = json.loads(request.data)
 
     if set(request_data.keys()) != args:
@@ -52,12 +54,14 @@ def signup():
 def edit_profile():
     '''POST. Request Data:
     - user_id: int
+    - age: int
+    - geo: str
     - interests: str[]
     - description: str
     - gender: str (male-straight, female-straight, male-homo, female-homo, male-bi, female-bi, non-binary)
     - preferences: str[] (male-straight, female-straight, male-homo, female-homo, male-bi, female-bi, non-binary)'''
 
-    args = {"user_id", "interests", "description", "gender", "preferences"}
+    args = {"user_id", "geo", "age", "interests", "description", "gender", "preferences"}
     request_data = json.loads(request.data)
 
     if set(request_data.keys()) != args:
