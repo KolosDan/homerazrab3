@@ -200,8 +200,8 @@ class Example extends React.Component {
     // }
 
     handleChange_age(e) {
-      console.log(e);
       const { name, value } = e.currentTarget;
+      console.log(name, value );
       this.setState({ [name]: value });
     }
 
@@ -250,7 +250,7 @@ class Example extends React.Component {
             </FormLayout>
 
             <FormLayout>
-              <Select onChange={this.handleChange_age} top="Ваш гендер" placeholder="">
+              <Select name="sex" onChange={this.handleChange_age} top="Ваш гендер" placeholder="">
                 <option value="male-straight">Мужчина Натурал</option>
                 <option value="female-straight">Женщина Натурал</option>
                 <option value="male-homo">Мужчина Гомосексуалист</option>
