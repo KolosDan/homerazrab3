@@ -44,6 +44,7 @@ class Example extends React.Component {
     getUser() {
       let interval = setInterval( () => {
         if(register_global){
+          console.log("sssssssssssss");
           instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/get_user', {
             user_id: user_obj.id,
           })
