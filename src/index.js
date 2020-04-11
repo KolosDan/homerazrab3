@@ -18,7 +18,7 @@ let user_obj = {};
 let user_groups = [];
 
 const instance = axios.create({
-  headers: { 'Access-Control-Allow-Origin': "*" }
+  headers: { 'Access-Control-Allow-Origin': "*" , "X-Requested-With" : "XMLHttpRequest"}
 });
 
 connect.send("VKWebAppInit", {});
