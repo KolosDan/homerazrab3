@@ -186,11 +186,11 @@ class Example extends React.Component {
       this.state = {
         activeStory : "discover",
         sex : "men",
-        pref : "",
-        age : 18
+        pref : [],
+        age : 18,
       };
       // this.handleChange_sex = this.handleChange_sex.bind(this);
-      this.handleChange_age = this.handleChange_age.bind(this);
+      this.handleChange = this.handleChange.bind(this);
       this.onStoryChange = this.onStoryChange.bind(this);
     }
 
@@ -199,10 +199,21 @@ class Example extends React.Component {
     //   // this.setState({sex: event.target.value});
     // }
 
-    handleChange_age(e) {
+    handleChange(e) {
       const { name, value } = e.currentTarget;
       console.log(name, value );
       this.setState({ [name]: value });
+    }
+
+    handleCheckbox(e) {
+      const { name, value } = e.currentTarget;
+      console.log(name, value );
+      if (value){
+        this.state.pref.push(name);
+      }else{
+        this.state.pref.remove(name);
+      }
+      console.log(this.state.pref);
     }
 
 
@@ -245,12 +256,12 @@ class Example extends React.Component {
 
             <FormLayout>
               <FormLayoutGroup top="Введите ваш возраст">
-                <Input onChange={this.handleChange_age} type="text" placeholder="18" />
+                <Input name="age" onChange={this.handleChange} type="text" placeholder="18" />
               </FormLayoutGroup>
             </FormLayout>
 
             <FormLayout>
-              <Select name="sex" onChange={this.handleChange_age} top="Ваш гендер" placeholder="">
+              <Select name="sex" onChange={this.handleChange} top="Ваш гендер" placeholder="">
                 <option value="male-straight">Мужчина Натурал</option>
                 <option value="female-straight">Женщина Натурал</option>
                 <option value="male-homo">Мужчина Гомосексуалист</option>
@@ -263,13 +274,13 @@ class Example extends React.Component {
 
           <Group header={<Header mode="secondary">Ваши предпочтения</Header>}>
           <FormLayout>
-              <Checkbox value="male-straight">Мужчина Натурал</Checkbox>
-              <Checkbox value="female-straight">Женщина Натурал</Checkbox>
-              <Checkbox value="male-homo">Мужчина Гомосексуалист</Checkbox>
-              <Checkbox value="female-homo">Женщина Гомосексуалист</Checkbox>
-              <Checkbox value="male-bi">Мужчина Би</Checkbox>
-              <Checkbox value="female-bi">Женщина Би</Checkbox>
-              <Checkbox value="non-binary">Не бинарный</Checkbox>
+              <Checkbox name="male-straight">Мужчина Натурал</Checkbox>
+              <Checkbox name="female-straight">Женщина Натурал</Checkbox>
+              <Checkbox name="male-homo">Мужчина Гомосексуалист</Checkbox>
+              <Checkbox name="female-homo">Женщина Гомосексуалист</Checkbox>
+              <Checkbox name="male-bi">Мужчина Би</Checkbox>
+              <Checkbox name="female-bi">Женщина Би</Checkbox>
+              <Checkbox name="non-binary">Не бинарный</Checkbox>
            <Button mode="secondary" onClick={() => this.props.setIndex()} size="xl">Продолжить</Button>
           </FormLayout>
           </Group>
