@@ -135,10 +135,10 @@ class Example extends React.Component {
                 <PanelHeaderSimple
                   right={<PanelHeaderButton></PanelHeaderButton>}
                 >
-                  <PanelHeaderContent
-                    before={<Avatar size={48} src="https://sun9-5.userapi.com/c834100/v834100961/4f8f1/hjsBzq433co.jpg?ava=1" />}
-                  >
-                    Лох Пидр
+                <PanelHeaderContent
+                  before={<Avatar size={48} src={user_obj.data.photo_100} />}
+                >
+                  {user_obj.data.first_name} {user_obj.data.last_name}
                   </PanelHeaderContent>
                 </PanelHeaderSimple>
 
