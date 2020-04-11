@@ -217,15 +217,17 @@ class Example extends React.Component {
               </FormLayoutGroup>
             </FormLayout>
 
-          <Select top="Ваш гендер" placeholder="">
-            <option value="m">Мужчина Натурал</option>
-            <option value="f">Женщина Натурал</option>
-            <option value="f">Мужчина Гомосексуалист</option>
-            <option value="f">Женщина Гомосексуалист</option>
-            <option value="f">Мужчина Би</option>
-            <option value="f">Женщина Би</option>
-            <option value="f">Не бинарный</option>
-          </Select>
+            <FormLayout>
+              <Select top="Ваш гендер" placeholder="">
+                <option value="m">Мужчина Натурал</option>
+                <option value="f">Женщина Натурал</option>
+                <option value="f">Мужчина Гомосексуалист</option>
+                <option value="f">Женщина Гомосексуалист</option>
+                <option value="f">Мужчина Би</option>
+                <option value="f">Женщина Би</option>
+                <option value="f">Не бинарный</option>
+              </Select>
+          </FormLayout>
 
           <Group header={<Header mode="secondary">Ваши предпочтения</Header>}>
           <FormLayout>
