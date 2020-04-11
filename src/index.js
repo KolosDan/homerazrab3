@@ -212,7 +212,7 @@ class Example extends React.Component {
       if (e.currentTarget.checked){
         this.state.pref.push(name);
       }else{
-        this.state.pref.pop( this.state.pref.indexOf(name) );
+        this.state.pref.splice( this.state.pref.indexOf(name),1 );
       }
       console.log(this.state.pref);
     }
