@@ -17,32 +17,13 @@ let user_obj = {};
 
 connect.send("VKWebAppInit", {});
 
-connect.subscribe((e) => {
-  console.log(e);
-  if (e.detail.type === "VKWebAppGetUserInfoResult") {
-    user_obj = e.detail.data;
-  }
-  else if (e.detail.type === "VKWebAppAccessTokenReceived") {
-    this.state.access_token = e.detail.data.access_token;
-    connect.send("VKWebAppCallAPIMethod", {
-      "method": "groups.get",
-      "request_id": "groups.get",
-      "params": { extended: 1, "user_id": user_obj.id, "v": "5.101", filter: "groups", count: 1000, "access_token": this.state.access_token }
-    });
-  }
-  else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
-    if (e.detail.data.request_id === "groups.get") {
-      console.log(e.detail.data.items);
-    }
-  }
-})
-
 class Example extends React.Component {
     constructor (props) {
       super(props);
   
       this.state = {
-        activeStory: 'feed',  
+        ready = false,
+        activeStory: 'feed', 
         access_token : "",
         register : true,
         user_obj : {}
@@ -51,6 +32,28 @@ class Example extends React.Component {
     }
 
     componentDidMount() {
+
+      connect.subscribe((e) => {
+        console.log(e);
+        if (e.detail.type === "VKWebAppGetUserInfoResult") {
+          user_obj = e.detail.data;
+          this.setState({ready : true});
+        }
+        else if (e.detail.type === "VKWebAppAccessTokenReceived") {
+          this.state.access_token = e.detail.data.access_token;
+          connect.send("VKWebAppCallAPIMethod", {
+            "method": "groups.get",
+            "request_id": "groups.get",
+            "params": { extended: 1, "user_id": user_obj.id, "v": "5.101", filter: "groups", count: 1000, "access_token": this.state.access_token }
+          });
+        }
+        else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
+          if (e.detail.data.request_id === "groups.get") {
+            console.log(e.detail.data.items);
+          }
+        }
+      })
+
       connect.send("VKWebAppGetUserInfo", {});
       connect.send("VKWebAppGetAuthToken", { "app_id": 7403106, "scope": "groups,friends" });
     }
@@ -61,10 +64,12 @@ class Example extends React.Component {
     }
   
     render () {
-      if(this.state.register) { 
-        return (<RegisterForm setIndex={i => this.setState({register: false})} />)
-    } else { 
-      return (
+      if (this.state.ready){
+
+        if(this.state.register) { 
+          return (<RegisterForm setIndex={i => this.setState({register: false})} />)
+        } else { 
+          return (
         <Epic activeStory={this.state.activeStory} tabbar={
           <Tabbar>
             <TabbarItem
@@ -161,6 +166,7 @@ class Example extends React.Component {
           
         </Epic>
       )
+      }
     } 
   }
 }
