@@ -58,8 +58,7 @@ class Example extends React.Component {
         }
         else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
           if (e.detail.data.request_id === "groups.get") {
-            user_groups = e.detail.data.items;
-            console.log("GROPUS" , e.detail.data.items)
+            user_groups = e.detail.data.response.items;
           }
         }
       })
