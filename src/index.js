@@ -23,7 +23,8 @@ class Example extends React.Component {
         activeStory: 'feed',  
         access_token : "",
         register : true,
-        user_obj : {}
+        user_obj : {},
+        user_age : 0
       };
       this.onStoryChange = this.onStoryChange.bind(this);
     }
@@ -45,6 +46,8 @@ class Example extends React.Component {
         else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
           if (e.detail.data.request_id === "groups.get") {
             console.log(e.detail.data.response.items);
+            this.setState({user_age : parseInt(( Date.now() - Date.parse(e.detail.data.bdate)) / 31536000000)});
+            console.log(user_age);
           }
         }
       })
