@@ -79,7 +79,6 @@ class Example extends React.Component {
       .catch(function (error) {
         console.log(error);
       });
-      this.setState({ loader:true })
     }
 
     get_users(){
@@ -363,7 +362,7 @@ class Example extends React.Component {
                                 <Button onClick={ () => { this.setState({ activeView: "notify" }); } } mode="secondary">Подробнее</Button>
                                 </Div>
                             </Div>)
-                            }else if (notification.type == "pep"){
+                            }else{
                                 return (
                                 <Div>
                                   <Button onClick={ () => {this.setState({ activeView: "notify" }); } } mode="secondary">Подробнее</Button>
