@@ -194,6 +194,7 @@ class Example extends React.Component {
 
 
                 <Group >
+                <RegisterForm setIndex={i => this.setState({register: false})} />
                   <Cell before={<Icon28Notifications />}>Уведомления</Cell>
                   <Cell before={<Icon28BlockOutline />}>Не беспокоить</Cell>
 
