@@ -123,7 +123,7 @@ class Example extends React.Component {
           </Panel>
         </View>)
   }
-  
+
       if (this.state.ready){
 
         if(this.state.register) { 
@@ -222,7 +222,7 @@ class Example extends React.Component {
                     </FormLayout>
 
                     <FormLayout>
-                      <Select name="sex" onChange={this.handleChange} top="Ваш гендер" placeholder="">
+                      <Select defaultValue={user_global_api.gender} name="sex" onChange={this.handleChange} top="Ваш гендер" placeholder="">
                         <option value="male-straight">Мужчина Натурал</option>
                         <option value="female-straight">Женщина Натурал</option>
                         <option value="male-homo">Мужчина Гомосексуалист</option>
