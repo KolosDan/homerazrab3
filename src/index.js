@@ -63,7 +63,6 @@ class Example extends React.Component {
     }
 
     get_users(){
-      console.log(parent_context.state.users)
       instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/browse', {
         user_id: user_obj.id,
         filter : "default",
@@ -121,7 +120,6 @@ class Example extends React.Component {
           .then(function (response) {
             // console.log(response.data.result)
            if (response.data.result == "no"){
-            curret_this.get_users()
             curret_this.setState({register : true})
             curret_this.setState({loader : false})
             curret_this.setState({ready : true});
@@ -356,6 +354,7 @@ class Example extends React.Component {
             alert(response.data.error);
           }
           else{
+            parent_context.get_users()
             instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/get_user', {
               user_id: user_obj.id,
             })
