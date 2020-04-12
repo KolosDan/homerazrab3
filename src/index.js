@@ -72,7 +72,6 @@ class Example extends React.Component {
         console.log(response.data.result)
         parent_context.setState({ loader:false })
         parent_context.setState({ users : response.data.result })
-        console.log(parent_context.state.users)
       })
       .catch(function (error) {
         console.log(error);
@@ -204,42 +203,22 @@ class Example extends React.Component {
 
           <View id="feed" activePanel="feed">
             <Panel id="feed">
-              <PanelHeader>Категории</PanelHeader>
+              <PanelHeader>Пользователи</PanelHeader>
             <Group>
               <List>
+              {parent_context.state.users.map((item) =>
                 <Cell
                   before={<Avatar size={72} />}
                   size="l"
-                  description="Че дескрипшон?"
+                  description={item.geo}
                   bottomContent={
                     <div style={{ display: 'flex' }}>
                       <Button size="m">Подробнее</Button>
                     </div>
                   }
                 >
-                  Экономика</Cell>
-                <Cell
-                  before={<Avatar size={72} />}
-                  size="l"
-                  description="Че дескрипшон?"
-                  bottomContent={
-                    <div style={{ display: 'flex' }}>
-                      <Button onClick={() => { this.setState({ activeStory: 'messages' }) }} size="m">Подробнее</Button>
-                    </div>
-                  }
-                >
-                  Физика</Cell>
-                <Cell
-                  before={<Avatar size={72} />}
-                  size="l"
-                  description="Че дескрипшон?"
-                  bottomContent={
-                    <div style={{ display: 'flex' }}>
-                      <Button  size="m">Подробнее</Button>
-                    </div>
-                  }
-                >
-                  Химия</Cell>
+                  {item.first_name}</Cell>
+                  )}
               </List>
             </Group>
             </Panel>
@@ -367,7 +346,8 @@ class Example extends React.Component {
         groups : user_groups,
         description : this.state.description,
         gender : this.state.sex,
-        preferences : this.state.pref
+        preferences : this.state.pref,
+        first_name : user_obj.first_name
       })
         .then(function (response) {
           if (response.data.error) {
