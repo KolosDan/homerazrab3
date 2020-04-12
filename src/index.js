@@ -62,20 +62,20 @@ class Example extends React.Component {
     update_user_data(){
       let checked = [];
       ["male-straight","female-straight","male-homo","female-homo","male-bi","female-bi","non-binary"].map(val => { document.getElementsByName(val)[0].checked ? checked.push(val) : console.log() })
-      console.log(checked)
-      // instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/edit_profile', {
-      //   user_id: user_obj.id,
-      //   age : document.getElementsByName("age")[0].value,
-      //   description : document.getElementsByName("description")[0].value,
-      //   gender : document.getElementsByName("sex")[0].value
-      // })
-      // .then(function (response) {
-      //   // console.log(response.data.result)
+      instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/edit_profile', {
+        user_id: user_obj.id,
+        age : document.getElementsByName("age")[0].value,
+        description : document.getElementsByName("description")[0].value,
+        gender : document.getElementsByName("sex")[0].value,
+        preferences : checked
+      })
+      .then(function (response) {
+        console.log(response.data.result)
 
-      // })
-      // .catch(function (error) {
-      //   console.log(error);
-      // });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
     }
 
     componentDidMount() {
