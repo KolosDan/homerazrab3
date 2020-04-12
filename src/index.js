@@ -38,6 +38,7 @@ class Example extends React.Component {
       this.handleChange = this.handleChange.bind(this);
       this.handleCheckbox = this.handleCheckbox.bind(this); 
       this.update_user_data = this.update_user_data.bind(this); 
+      this.get_users = this.get_users.bind(this); 
     }
 
     handleChange(e) {
@@ -58,6 +59,21 @@ class Example extends React.Component {
     
     onStoryChange (e) {
       this.setState({ activeStory: e.currentTarget.dataset.story })
+    }
+
+    get_users(){
+      instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/browse', {
+        user_id: user_obj.id,
+        filter : "default",
+        value : "hoy"
+      })
+      .then(function (response) {
+        console.log(response.data.result)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+      this.setState({ loader:true })
     }
 
     update_user_data(){
@@ -105,6 +121,7 @@ class Example extends React.Component {
             curret_this.setState({ready : true});
            }
            else {
+            this.get_users()
             curret_this.setState({register : false});
             curret_this.setState({loader : false});
             user_global_api = response.data.result;
