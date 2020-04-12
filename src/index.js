@@ -30,7 +30,7 @@ class Example extends React.Component {
   
       this.state = {
         ready : false,
-        activeStory: 'feed', 
+        activeStory: 'discover', 
         access_token : "",
         register : true,
         loader : true
@@ -98,7 +98,6 @@ class Example extends React.Component {
       if (this.state.ready){
 
       if (this.state.loader){
-        console.log("loading...")
             return (
              <View activePanel="spinner">
               <Panel id="spinner">
@@ -116,18 +115,18 @@ class Example extends React.Component {
           return (
         <Epic activeStory={this.state.activeStory} tabbar={
           <Tabbar>
+              <TabbarItem
+              onClick={this.onStoryChange}
+              selected={this.state.activeStory === 'discover'}
+              data-story="discover"
+              text="Профиль"
+            ><Icon24Settings   /></TabbarItem>
             <TabbarItem
               onClick={this.onStoryChange}
               selected={this.state.activeStory === 'feed'}
               data-story="feed"
               text="Лента"
             ><Icon28AddOutline /></TabbarItem>
-            <TabbarItem
-              onClick={this.onStoryChange}
-              selected={this.state.activeStory === 'discover'}
-              data-story="discover"
-              text="Профиль"
-            ><Icon24Settings   /></TabbarItem>
             <TabbarItem
               onClick={this.onStoryChange}
               selected={this.state.activeStory === 'messages'}
