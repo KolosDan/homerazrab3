@@ -122,7 +122,7 @@ class Example extends React.Component {
         value : value
       })
       .then(function (response) {
-
+        console.log(response.data.result)
       })
       .catch(function (error) {
         console.log(error);
