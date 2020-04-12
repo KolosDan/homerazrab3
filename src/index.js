@@ -117,6 +117,7 @@ class Example extends React.Component {
           .then(function (response) {
             // console.log(response.data.result)
            if (response.data.result == "no"){
+            curret_this.get_users()
             curret_this.setState({register : true})
             curret_this.setState({loader : false})
             curret_this.setState({ready : true});
@@ -180,7 +181,7 @@ class Example extends React.Component {
               onClick={this.onStoryChange}
               selected={this.state.activeStory === 'discover'}
               data-story="discover"
-              text="Профиль"
+              text="Профиль"this
             ><Icon24Settings   /></TabbarItem>
             <TabbarItem
               onClick={this.onStoryChange}
