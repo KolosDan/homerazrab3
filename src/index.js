@@ -17,6 +17,7 @@ import * as connect from '@vkontakte/vkui-connect';
 let user_obj = {};
 let user_groups = [];
 let user_global_api = {};
+let parent_context = {};
 
 const instance = axios.create({
   headers: { 'Access-Control-Allow-Origin': "*" , "X-Requested-With" : "XMLHttpRequest"}
@@ -64,6 +65,7 @@ class Example extends React.Component {
       connect.subscribe((e) => {
         console.log(e);
         let curret_this = this;
+        parent_context = this;
 
         if (e.detail.type === "VKWebAppGetUserInfoResult") {
           user_obj = e.detail.data;
@@ -128,7 +130,7 @@ class Example extends React.Component {
 
       if (this.state.ready){
         if(this.state.register) { 
-          return (<RegisterForm setIndex={i => this.setState({register: false})} />)
+          return (<RegisterForm  />)
         } else { 
           return (
         <Epic activeStory={this.state.activeStory} tabbar={
@@ -238,12 +240,12 @@ class Example extends React.Component {
                   <Group header={<Header mode="secondary">Ваши предпочтения</Header>}>
                   <FormLayout>
                       <Checkbox checked={user_global_api.preferences.indexOf("male-straight") == -1 ? false : true} onChange={this.handleCheckbox} name="male-straight">Мужчина Натурал</Checkbox>
-                      <Checkbox checked={user_global_api.preferences.indexOf("male-straight") == -1 ? false : true} onChange={this.handleCheckbox} name="female-straight">Женщина Натурал</Checkbox>
-                      <Checkbox checked={user_global_api.preferences.indexOf("male-straight") == -1 ? false : true} onChange={this.handleCheckbox} name="male-homo">Мужчина Гомосексуалист</Checkbox>
-                      <Checkbox checked={user_global_api.preferences.indexOf("male-straight") == -1 ? false : true} onChange={this.handleCheckbox} name="female-homo">Женщина Гомосексуалист</Checkbox>
-                      <Checkbox checked={user_global_api.preferences.indexOf("male-straight") == -1 ? false : true} onChange={this.handleCheckbox} name="male-bi">Мужчина Би</Checkbox>
-                      <Checkbox checked={user_global_api.preferences.indexOf("male-straight") == -1 ? false : true} onChange={this.handleCheckbox} name="female-bi">Женщина Би</Checkbox>
-                      <Checkbox checked={user_global_api.preferences.indexOf("male-straight") == -1 ? false : true} onChange={this.handleCheckbox} name="non-binary">Не бинарный</Checkbox>
+                      <Checkbox checked={user_global_api.preferences.indexOf("female-straight") == -1 ? false : true} onChange={this.handleCheckbox} name="female-straight">Женщина Натурал</Checkbox>
+                      <Checkbox checked={user_global_api.preferences.indexOf("male-homo") == -1 ? false : true} onChange={this.handleCheckbox} name="male-homo">Мужчина Гомосексуалист</Checkbox>
+                      <Checkbox checked={user_global_api.preferences.indexOf("female-homo") == -1 ? false : true} onChange={this.handleCheckbox} name="female-homo">Женщина Гомосексуалист</Checkbox>
+                      <Checkbox checked={user_global_api.preferences.indexOf("male-bi") == -1 ? false : true} onChange={this.handleCheckbox} name="male-bi">Мужчина Би</Checkbox>
+                      <Checkbox checked={user_global_api.preferences.indexOf("female-bi") == -1 ? false : true} onChange={this.handleCheckbox} name="female-bi">Женщина Би</Checkbox>
+                      <Checkbox checked={user_global_api.preferences.indexOf("non-binary") == -1 ? false : true} onChange={this.handleCheckbox} name="non-binary">Не бинарный</Checkbox>
                   <Button mode="secondary" size="xl">Обновить</Button>
                   </FormLayout>
                   </Group>
@@ -324,6 +326,7 @@ class Example extends React.Component {
             user_global_api.preferences = curret_this.state.pref;
             user_global_api.gender = curret_this.state.sex;
             user_global_api.description = curret_this.state.description;
+            parent_context.setState({register: false})
           }
         })
         .catch(function (error) {
