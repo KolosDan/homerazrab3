@@ -69,9 +69,9 @@ class Example extends React.Component {
         value : "hoy"
       })
       .then(function (response) {
+        parent_context.setState({ users : response.data.result })
         console.log(response.data.result)
         parent_context.setState({ loader:false })
-        parent_context.setState({ users : response.data.result })
       })
       .catch(function (error) {
         console.log(error);
