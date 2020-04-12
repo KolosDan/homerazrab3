@@ -215,7 +215,7 @@ class Example extends React.Component {
                     description={item.geo}
                     bottomContent={
                       <div style={{ display: 'flex' }}>
-                        <Button size="m">Познакомиться😉</Button>
+                        <Button mode="outline" size="m">Познакомиться😉</Button>
                       </div>
                     }
                   >
