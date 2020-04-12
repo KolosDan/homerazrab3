@@ -222,12 +222,12 @@ class Example extends React.Component {
                         <Textarea onChange={this.handleChange} name="description"  value={user_global_api.description}  top="О себе"/>
                     </FormLayout>
 
-                    <Group header={<Header mode="secondary">В переключателях</Header>}>
+                    <Group header={<Header mode="secondary">Ваши интересы</Header>}>
                       <Tabs mode="buttons">
                         <HorizontalScroll>
-                          <TabsItem selected> Люди </TabsItem>
-                          <TabsItem selected> Люди </TabsItem>
-                          <TabsItem selected> Люди </TabsItem>
+                        {user_global_api.interests.map((item) =>
+                          <TabsItem selected> {item} </TabsItem>
+                        )}
                         </HorizontalScroll>
                       </Tabs>
                     </Group>
