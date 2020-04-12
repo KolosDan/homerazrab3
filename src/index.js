@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { View, Panel, PanelHeader, Group, Cell, Epic, Tabbar, TabbarItem,
 List, Button , Avatar , PanelHeaderContent, PanelHeaderButton, PanelHeaderSimple,
 FormLayoutGroup, Select, FormLayout , Root , Textarea, Input, Checkbox, Header,
-Spinner, TabsItem, HorizontalScroll, Tabs}  from '@vkontakte/vkui';
+Spinner, TabsItem, HorizontalScroll, Tabs, Div}  from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 import axios from 'axios';
 import Icon24Settings from '@vkontakte/icons/dist/24/settings';
