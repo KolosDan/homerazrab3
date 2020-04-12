@@ -94,7 +94,6 @@ class Example extends React.Component {
   
   
     render () {
-
       if (this.state.ready){
 
       if (this.state.loader){
@@ -191,10 +190,8 @@ class Example extends React.Component {
                   {user_obj.first_name} {user_obj.last_name}
                   </PanelHeaderContent>
                 </PanelHeaderSimple>
-                <RegisterForm setIndex={i => this.setState({register: false})} />
-
-
             </Panel>
+            <RegisterForm setIndex={i => this.setState({register: false})} />
           </View>
           
         </Epic>
