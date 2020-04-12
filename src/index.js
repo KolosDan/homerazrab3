@@ -252,7 +252,7 @@ class Example extends React.Component {
                       <Checkbox checked={user_global_api.preferences.indexOf("male-bi") == -1 ? false : true} onChange={this.handleCheckbox} name="male-bi">Мужчина Би</Checkbox>
                       <Checkbox checked={user_global_api.preferences.indexOf("female-bi") == -1 ? false : true} onChange={this.handleCheckbox} name="female-bi">Женщина Би</Checkbox>
                       <Checkbox checked={user_global_api.preferences.indexOf("non-binary") == -1 ? false : true} onChange={this.handleCheckbox} name="non-binary">Не бинарный</Checkbox>
-                  <Button mode="secondary" size="xl" onClick={() => { console.log(document.getElementsByName("age").value) }} >Сохранить изменения</Button>
+                  <Button mode="secondary" size="xl" onClick={() => { console.log(document.getElementsByName("age")[0].value) }} >Сохранить изменения</Button>
                   </FormLayout>
                   </Group>
 
