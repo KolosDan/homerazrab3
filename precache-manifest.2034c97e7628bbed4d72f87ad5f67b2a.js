@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/homerazrab3/static/js/runtime~main.5ce44b85.js"
   },
   {
-    "revision": "6efadc6140559a905019",
-    "url": "/homerazrab3/static/js/main.e391d359.chunk.js"
+    "revision": "a5bd09f636dfad759e98",
+    "url": "/homerazrab3/static/js/main.d44a55d8.chunk.js"
   },
   {
     "revision": "db57e950f9c2516d8bd9",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/homerazrab3/static/css/2.3a76fbd9.chunk.css"
   },
   {
-    "revision": "d4c4c6936b45a08e73e14ffc5edcc936",
+    "revision": "cf5df0f7521aa9deeb8564cca965ac57",
     "url": "/homerazrab3/index.html"
   }
 ];
