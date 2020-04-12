@@ -102,6 +102,7 @@ class Example extends React.Component {
         </div>
       </Panel>)
       }
+      else {
       if (this.state.ready){
         if(this.state.register) { 
           return (<RegisterForm setIndex={i => this.setState({register: false})} />)
@@ -206,6 +207,7 @@ class Example extends React.Component {
     } else{
       return <div />
     }
+  }
   }
 }
 
