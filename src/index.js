@@ -321,19 +321,19 @@ class Example extends React.Component {
               <Div>
                   Ебучий текст с кнопкой внизу
                   <Div>
-                    <Button size="xl" mode="secondary">Подробнее</Button>
+                    <Button mode="secondary">Подробнее</Button>
                   </Div>
               </Div>
               <Div>
                   Ебучий текст с кнопкой внизу
                   <Div>
-                    <Button size="xl" mode="secondary">Подробнее</Button>
+                    <Button mode="secondary">Подробнее</Button>
                   </Div>
               </Div>
               <Div>
                   Ебучий текст с кнопкой внизу
                   <Div>
-                    <Button size="xl" mode="secondary">Подробнее</Button>
+                    <Button mode="secondary">Подробнее</Button>
                   </Div>
               </Div>
             </Panel>
