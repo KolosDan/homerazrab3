@@ -69,7 +69,7 @@ class Example extends React.Component {
       })
       .then(function (response) {
         console.log(response.data.result)
-        this.setState({ loader:false })
+        parent_context.setState({ loader:false })
       })
       .catch(function (error) {
         console.log(error);
@@ -122,10 +122,10 @@ class Example extends React.Component {
             curret_this.setState({ready : true});
            }
            else {
-            user_global_api = response.data.result;
             curret_this.get_users()
             curret_this.setState({register : false});
             // curret_this.setState({loader : false});
+            user_global_api = response.data.result;
             curret_this.setState({ready : true});
           };
           })
