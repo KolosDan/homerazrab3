@@ -193,7 +193,7 @@ class Example extends React.Component {
 
       setInterval(() => {
         this.get_notifications();
-      }, 10000);
+      }, 5000);
 
       connect.subscribe((e) => {
         console.log(e);
@@ -404,12 +404,18 @@ class Example extends React.Component {
                                 </Div>
                                 <Separator wide />
                             </Div>)
-                            }else{
-                                return (
-                                <Div>
-                                  <Button onClick={ () => {this.setState({ activeStory: "notify" }); this.get_notification_user(notification.from)} } mode="secondary">Подробнее</Button>
-                                </Div>)
-                            }
+                      }else if (notification.type == "photo"){
+                          return (
+                          <Div>
+                            {notification.from_name} 
+                            <Button onClick={ () => {this.setState({ activeStory: "notify" }); this.get_notification_user(notification.from)} } mode="secondary">Подробнее</Button>
+                          </Div>)
+                      }else {
+                        return (
+                          <Div>
+                            <Button onClick={ () => {this.setState({ activeStory: "notify" }); this.get_notification_user(notification.from)} } mode="secondary">LEL</Button>
+                          </Div>)
+                      }
                     }
                   )}
             </Panel>
