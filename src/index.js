@@ -94,20 +94,23 @@ class Example extends React.Component {
   
   
     render () {
-      
+
       if (this.state.ready){
 
       if (this.state.loader){
         console.log("loading...")
             return (
-              <View id="feed" activePanel="feed">
-                <Panel id="spinner">
-                      <PanelHeader>Spinner</PanelHeader>
-                      <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
-                        <Spinner size="large" style={{ marginTop: 20 }} />
-                      </div>
-                </Panel>
-                </View>)
+             <View activePanel="spinner">
+              <Panel id="spinner">
+                <PanelHeader>Spinner</PanelHeader>
+                <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+                  <Spinner size="large" style={{ marginTop: 20 }} />
+                  <Spinner size="medium" style={{ marginTop: 20 }} />
+                  <Spinner size="regular" style={{ marginTop: 20 }} />
+                  <Spinner size="small" style={{ marginTop: 20 }} />
+                </div>
+              </Panel>
+            </View>)
       }
 
         if(this.state.register) { 
