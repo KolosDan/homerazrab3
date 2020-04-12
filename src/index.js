@@ -39,7 +39,8 @@ class Example extends React.Component {
       this.handleChange = this.handleChange.bind(this);
       this.handleCheckbox = this.handleCheckbox.bind(this); 
       this.update_user_data = this.update_user_data.bind(this); 
-      this.get_users = this.get_users.bind(this); 
+      this.get_users = this.get_users.bind(this);  
+      this.start_dialog = this.start_dialog.bind(this);  
     }
 
     handleChange(e) {
@@ -60,6 +61,20 @@ class Example extends React.Component {
     
     onStoryChange (e) {
       this.setState({ activeStory: e.currentTarget.dataset.story })
+    }
+
+    start_dialog(id_to){
+      instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/start_dialog', {
+        from: user_obj.id,
+        to : id_to
+      })
+      .then(function (response) {
+        console.log(response.data.result)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+      this.setState({ loader:true })
     }
 
     get_users(){
@@ -215,7 +230,7 @@ class Example extends React.Component {
                     description={item.geo}
                     bottomContent={
                       <div style={{ display: 'flex' }}>
-                        <Button mode="outline" size="m">Познакомиться😉</Button>
+                        <Button onClick={() => {this.start_dialog(item.user_id) }} mode="outline" size="m">Познакомиться😉</Button>
                       </div>
                     }
                   >
