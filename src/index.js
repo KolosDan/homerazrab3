@@ -235,11 +235,11 @@ class Example extends React.Component {
 
                   <Group header={<Header mode="secondary">Ваши предпочтения</Header>}>
                   <FormLayout>
-                      <Checkbox onChange={this.handleCheckbox} name="male-straight">Мужчина Натурал</Checkbox>
+                      <Checkbox checked={true} onChange={this.handleCheckbox} name="male-straight">Мужчина Натурал</Checkbox>
                       <Checkbox onChange={this.handleCheckbox} name="female-straight">Женщина Натурал</Checkbox>
                       <Checkbox onChange={this.handleCheckbox} name="male-homo">Мужчина Гомосексуалист</Checkbox>
                       <Checkbox onChange={this.handleCheckbox} name="female-homo">Женщина Гомосексуалист</Checkbox>
-                      <Checkbox onChange={this.handleCheckbox} name="male-bi">Мужчина Би</Checkbox>
+                      <Checkbox checked={true} onChange={this.handleCheckbox} name="male-bi">Мужчина Би</Checkbox>
                       <Checkbox onChange={this.handleCheckbox} name="female-bi">Женщина Би</Checkbox>
                       <Checkbox onChange={this.handleCheckbox} name="non-binary">Не бинарный</Checkbox>
                   <Button mode="secondary" size="xl">Обновить</Button>
