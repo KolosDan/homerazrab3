@@ -16,7 +16,7 @@ import * as connect from '@vkontakte/vkui-connect';
 
 let user_obj = {};
 let user_groups = [];
-let register_global = false;
+let user_global_api = {};
 
 const instance = axios.create({
   headers: { 'Access-Control-Allow-Origin': "*" , "X-Requested-With" : "XMLHttpRequest"}
@@ -82,7 +82,7 @@ class Example extends React.Component {
            else {
             curret_this.setState({register : false});
             curret_this.setState({loader : false})
-            console.log(curret_this.state.register);
+            user_global_api = response.data.result;
           };
           })
           .catch(function (error) {
@@ -212,16 +212,16 @@ class Example extends React.Component {
 
                     <FormLayout>
                       <FormLayoutGroup top="Введите ваш возраст">
-                        <Input name="age" onChange={this.handleChange} type="text" placeholder="18" />
+                          <Input name="age" onChange={this.handleChange} type="text"> {user_global_api.age}</Input>
                       </FormLayoutGroup>
                     </FormLayout>
 
                     <FormLayout>
-                        <Textarea onChange={this.handleChange} name="description" top="О себе" />
+                        <Textarea onChange={this.handleChange} name="description" top="О себе">  {user_global_api.description} </Textarea>
                     </FormLayout>
 
                     <FormLayout>
-                      <Select name="sex" onChange={this.handleChange} top="Ваш гендер" placeholder="">
+                      <Select name="sex" onChange={this.handleChange} top="Ваш гендер" defaultValue={user_global_api.dn}>
                         <option value="male-straight">Мужчина Натурал</option>
                         <option value="female-straight">Женщина Натурал</option>
                         <option value="male-homo">Мужчина Гомосексуалист</option>
@@ -266,7 +266,7 @@ class Example extends React.Component {
   
       this.state = {
         activeStory : "discover",
-        sex : "men",
+        sex : "",
         pref : [],
         age : 18,
         description : ""
@@ -276,17 +276,13 @@ class Example extends React.Component {
       this.onStoryChange = this.onStoryChange.bind(this);
       this.handleCheckbox = this.handleCheckbox.bind(this); 
       this.register_user = this.register_user.bind(this);
-    }
-
-    // handleChange_sex(event) {
-    //   // console.log(event.target.value);
-    //   // this.setState({sex: event.target.value});
-    // }
+    } 
 
     handleChange(e) {
       const { name, value } = e.currentTarget;
       console.log(name, value );
       this.setState({ [name]: value });
+      console.log(this.state.sex);
     }
 
     handleCheckbox(e) {
