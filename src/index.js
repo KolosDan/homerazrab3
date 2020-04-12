@@ -35,16 +35,21 @@ class Example extends React.Component {
         register : true
       };
       this.onStoryChange = this.onStoryChange.bind(this);
+      this.onStoryChange = this.onStoryChange.bind(this);
     }
     
     onStoryChange (e) {
       this.setState({ activeStory: e.currentTarget.dataset.story })
     }
 
-    getUser() {
-      let interval = setInterval( () => {
-        if(register_global){
-          
+    componentDidMount() {
+      connect.subscribe((e) => {
+        console.log(e);
+        
+        if (e.detail.type === "VKWebAppGetUserInfoResult") {
+          user_obj = e.detail.data;
+          console.log(user_obj);
+          this.setState({ready : true});
           instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/get_user', {
             user_id: user_obj.id,
           })
@@ -52,32 +57,15 @@ class Example extends React.Component {
             console.log(response.data.result)
            if (response.data.result == "no"){
              this.setState({register : true})
-             clearInterval(interval);
            }
            else {
             this.setState({register : false});
             console.log(this.state.register);
-            clearInterval(interval);
           };
           })
           .catch(function (error) {
             console.log(error);
           });
-        }
-      }, 5000 );
-    }
-  
-
-    componentDidMount() {
-      connect.subscribe((e) => {
-        console.log(e);
-        
-        if (e.detail.type === "VKWebAppGetUserInfoResult") {
-          this.getUser();
-          user_obj = e.detail.data;
-          console.log(user_obj);
-          this.setState({ready : true});
-          register_global = true;
         }
         else if (e.detail.type === "VKWebAppAccessTokenReceived") {
           this.state.access_token = e.detail.data.access_token;
