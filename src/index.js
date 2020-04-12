@@ -350,7 +350,7 @@ class Example extends React.Component {
             </FormLayout>
 
             <FormLayout>
-              <Select value="male-straight" name="sex" onChange={this.handleChange} top="Ваш гендер" placeholder="">
+              <Select name="sex" onChange={this.handleChange} top="Ваш гендер" placeholder="">
                 <option value="male-straight">Мужчина Натурал</option>
                 <option value="female-straight">Женщина Натурал</option>
                 <option value="male-homo">Мужчина Гомосексуалист</option>
