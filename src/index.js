@@ -105,6 +105,7 @@ class Example extends React.Component {
       })
       .then(function (response) {
         parent_context.setState({notifications : response.data.result})
+        console.log(this.state.notifications)
       })
       .catch(function (error) {
         console.log(error);
@@ -154,7 +155,7 @@ class Example extends React.Component {
 
       setInterval(() => {
         this.get_notifications();
-      }, 30000);
+      }, 10000);
 
       connect.subscribe((e) => {
         console.log(e);
