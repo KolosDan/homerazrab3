@@ -354,6 +354,7 @@ class Example extends React.Component {
             <Panel id="messages">
               <PanelHeader>Уведомления</PanelHeader>
                   {this.state.notifications.map((notification) => {
+                    console.log(notification)
                       if (notification.type == "init"){
                             return (
                             <Div>
