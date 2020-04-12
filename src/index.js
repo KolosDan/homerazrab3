@@ -71,12 +71,14 @@ class Example extends React.Component {
         preferences : checked
       })
       .then(function (response) {
+        this.setState({ loader:false })
         console.log(response.data.result)
 
       })
       .catch(function (error) {
         console.log(error);
       });
+      this.setState({ loader:true })
     }
 
     componentDidMount() {
