@@ -212,12 +212,12 @@ class Example extends React.Component {
 
                     <FormLayout>
                       <FormLayoutGroup top="Введите ваш возраст">
-                          <Input name="age" onChange={this.handleChange} type="text"> {user_global_api.age}</Input>
+                          <Input name="age" onChange={this.handleChange} type="text"> </Input>
                       </FormLayoutGroup>
                     </FormLayout>
 
                     <FormLayout>
-                        <Textarea onChange={this.handleChange} name="description" top="О себе">  {user_global_api.description} </Textarea>
+                        <Textarea onChange={this.handleChange} name="description" top="О себе"> </Textarea>
                     </FormLayout>
 
                     <FormLayout>
