@@ -41,7 +41,9 @@ class Example extends React.Component {
       this.update_user_data = this.update_user_data.bind(this); 
       this.get_users = this.get_users.bind(this);  
       this.start_dialog = this.start_dialog.bind(this);  
+      this.get_notifications = this.get_notifications.bind(this);  
     }
+    
 
     handleChange(e) {
       const { name, value } = e.currentTarget;
@@ -133,6 +135,9 @@ class Example extends React.Component {
     }
 
     componentDidMount() {
+      setInterval(() => {
+        this.get_notifications();
+      }, 10000);
       connect.subscribe((e) => {
         console.log(e);
         let curret_this = this;
