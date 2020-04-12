@@ -69,9 +69,7 @@ class Example extends React.Component {
       })
       .then(function (response) {
         console.log(response.data.result)
-        parent_context.setState({register : false});
-        parent_context.setState({loader : false});
-        parent_context.setState({ready : true});
+        this.setState({ loader:false })
       })
       .catch(function (error) {
         console.log(error);
@@ -126,6 +124,9 @@ class Example extends React.Component {
            else {
             user_global_api = response.data.result;
             curret_this.get_users()
+            curret_this.setState({register : false});
+            // curret_this.setState({loader : false});
+            curret_this.setState({ready : true});
           };
           })
           .catch(function (error) {
