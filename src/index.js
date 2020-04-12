@@ -326,30 +326,13 @@ class Example extends React.Component {
             alert(response.data.error);
           }
           else{
-            // user_global_api.age = curret_this.state.age;
-            // user_global_api.geo = user_obj.city.title;
-            // user_global_api.preferences = curret_this.state.pref;
-            // user_global_api.gender = curret_this.state.sex;
-            // user_global_api.description = curret_this.state.description;
-            // parent_context.setState({register: false})
-              instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/get_user', {
-                user_id: user_obj.id,
-              })
-              .then(function (response) {
-              if (response.data.result == "no"){
-                alert("WtF????")
-              }
-              else {
-                parent_context.setState({register : false});
-                parent_context.setState({loader : false})
-                user_global_api = response.data.result;
-                console.log(user_global_api);
-                parent_context.setState({ready : true});
-              };
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
+            user_global_api.age = curret_this.state.age;
+            user_global_api.geo = user_obj.city.title;
+            user_global_api.preferences = curret_this.state.pref;
+            user_global_api.gender = curret_this.state.sex;
+            user_global_api.description = curret_this.state.description;
+            user_global_api.interests = [];
+            parent_context.setState({register: false})
           }
         })
         .catch(function (error) {
