@@ -418,6 +418,10 @@ class Example extends React.Component {
                     )}
                     </HorizontalScroll>
                   </Tabs>
+                  <Div style={{display: 'flex'}}>
+                    <Button size="l" stretched mode="commerce">Принять</Button>
+                    <Button size="l" stretched mode="destructive">Отклонить</Button>
+                  </Div>
                 </Div>
               </Panel>
          </View> : <Div></Div>}
