@@ -83,6 +83,7 @@ class Example extends React.Component {
             curret_this.setState({register : false});
             curret_this.setState({loader : false})
             user_global_api = response.data.result;
+            console.log(user_global_api);
           };
           })
           .catch(function (error) {
