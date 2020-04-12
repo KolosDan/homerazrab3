@@ -266,13 +266,13 @@ class Example extends React.Component {
 
                   <Group header={<Header mode="secondary">Ваши предпочтения</Header>}>
                   <FormLayout>
-                      <Checkbox defaultValue={user_global_api.preferences.indexOf("male-straight") == -1 ? false : true} onChange={this.handleCheckbox} name="male-straight">Мужчина Натурал</Checkbox>
-                      <Checkbox defaultValue={user_global_api.preferences.indexOf("female-straight") == -1 ? false : true} onChange={this.handleCheckbox} name="female-straight">Женщина Натурал</Checkbox>
-                      <Checkbox defaultValue={user_global_api.preferences.indexOf("male-homo") == -1 ? false : true} onChange={this.handleCheckbox} name="male-homo">Мужчина Гомосексуалист</Checkbox>
-                      <Checkbox defaultValue={user_global_api.preferences.indexOf("female-homo") == -1 ? false : true} onChange={this.handleCheckbox} name="female-homo">Женщина Гомосексуалист</Checkbox>
-                      <Checkbox defaultValue={user_global_api.preferences.indexOf("male-bi") == -1 ? false : true} onChange={this.handleCheckbox} name="male-bi">Мужчина Би</Checkbox>
-                      <Checkbox defaultValue={user_global_api.preferences.indexOf("female-bi") == -1 ? false : true} onChange={this.handleCheckbox} name="female-bi">Женщина Би</Checkbox>
-                      <Checkbox defaultValue={user_global_api.preferences.indexOf("non-binary") == -1 ? false : true} onChange={this.handleCheckbox} name="non-binary">Не бинарный</Checkbox>
+                      <Checkbox defaultValue={user_global_api.preferences.indexOf("male-straight") == -1 ? "off" : "on"} onChange={this.handleCheckbox} name="male-straight">Мужчина Натурал</Checkbox>
+                      <Checkbox defaultValue={user_global_api.preferences.indexOf("female-straight") == -1 ? "off" : "on"} onChange={this.handleCheckbox} name="female-straight">Женщина Натурал</Checkbox>
+                      <Checkbox defaultValue={user_global_api.preferences.indexOf("male-homo") == -1 ? "off" : "on"} onChange={this.handleCheckbox} name="male-homo">Мужчина Гомосексуалист</Checkbox>
+                      <Checkbox defaultValue={user_global_api.preferences.indexOf("female-homo") == -1 ? "off" : "on"} onChange={this.handleCheckbox} name="female-homo">Женщина Гомосексуалист</Checkbox>
+                      <Checkbox defaultValue={user_global_api.preferences.indexOf("male-bi") == -1 ? "off" : "on"} onChange={this.handleCheckbox} name="male-bi">Мужчина Би</Checkbox>
+                      <Checkbox defaultValue={user_global_api.preferences.indexOf("female-bi") == -1 ? "off" : "on"} onChange={this.handleCheckbox} name="female-bi">Женщина Би</Checkbox>
+                      <Checkbox defaultValue={user_global_api.preferences.indexOf("non-binary") == -1 ? "off" : "on"} onChange={this.handleCheckbox} name="non-binary">Не бинарный</Checkbox>
                   <Button mode="secondary" size="xl" onClick={() => { this.update_user_data() }} >Сохранить изменения</Button>
                   </FormLayout>
                   </Group>
