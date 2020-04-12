@@ -218,7 +218,14 @@ class Example extends React.Component {
                   }
                 >
                   {item.first_name} 
-                   <TabsItem selected> {item.interests} </TabsItem></Cell>
+                  <Tabs mode="buttons">
+                        <HorizontalScroll>
+                        {item.interests.map((interest) =>
+                          <TabsItem selected> {interest} </TabsItem>
+                        )}
+                        </HorizontalScroll>
+                  </Tabs>
+                  </Cell>
                   )}
               </List>
             </Group>
