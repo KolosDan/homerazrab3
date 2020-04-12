@@ -98,12 +98,15 @@ class Example extends React.Component {
 
       if (this.state.loader){
             return (
+              <View id="feed" activePanel="feed">
                 <Panel id="spinner">
                       <PanelHeader>Spinner</PanelHeader>
                       <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
                         <Spinner size="large" style={{ marginTop: 20 }} />
                       </div>
-                </Panel>)
+                </Panel>
+                </View>
+                )
       }
 
 
