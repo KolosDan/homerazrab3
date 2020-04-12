@@ -31,7 +31,7 @@ class Example extends React.Component {
   
       this.state = {
         ready : false,
-        activeStory: 'discover', 
+        activeStory: 'feed', 
         access_token : "",
         register : true,
         loader : true
