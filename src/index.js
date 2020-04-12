@@ -36,7 +36,24 @@ class Example extends React.Component {
         loader : true
       };
       this.onStoryChange = this.onStoryChange.bind(this);
-      this.onStoryChange = this.onStoryChange.bind(this);
+      this.handleChange = this.handleChange.bind(this);
+      this.handleCheckbox = this.handleCheckbox.bind(this); 
+    }
+
+    handleChange(e) {
+      const { name, value } = e.currentTarget;
+      console.log(name, value );
+      this.setState({ [name]: value });
+    }
+
+    handleCheckbox(e) {
+      const { name, value } = e.currentTarget;
+      console.log(name, value );
+      if (e.currentTarget.checked){
+        this.state.pref.push(name);
+      }else{
+        this.state.pref.splice( this.state.pref.indexOf(name),1 );
+      }
     }
     
     onStoryChange (e) {
@@ -180,19 +197,57 @@ class Example extends React.Component {
           </View>
 
           <View id="discover" activePanel="discover">
-            <Panel id="discover" separator={false}>
-                <PanelHeaderSimple
-                  right={<PanelHeaderButton></PanelHeaderButton>}
-                >
-                <PanelHeaderContent
-                  before={<Avatar size={48} src={user_obj.photo_100} />}
-                >
-                  {user_obj.first_name} {user_obj.last_name}
-                  </PanelHeaderContent>
-                </PanelHeaderSimple>
-            </Panel>
-            <RegisterForm setIndex={i => this.setState({register: false})} />
-          </View>
+              <Panel id="discover" separator={false}>
+                  <PanelHeaderSimple
+                    right={<PanelHeaderButton></PanelHeaderButton>}
+                  >
+                    <PanelHeaderContent
+                      before={<Avatar size={48} src={user_obj.photo_100} />}
+                    >
+                      {user_obj.first_name} {user_obj.last_name}
+                    </PanelHeaderContent>
+                  </PanelHeaderSimple>
+
+                <Group>
+
+                    <FormLayout>
+                      <FormLayoutGroup top="Введите ваш возраст">
+                        <Input name="age" onChange={this.handleChange} type="text" placeholder="18" />
+                      </FormLayoutGroup>
+                    </FormLayout>
+
+                    <FormLayout>
+                        <Textarea onChange={this.handleChange} name="description" top="О себе" />
+                    </FormLayout>
+
+                    <FormLayout>
+                      <Select name="sex" onChange={this.handleChange} top="Ваш гендер" placeholder="">
+                        <option value="male-straight">Мужчина Натурал</option>
+                        <option value="female-straight">Женщина Натурал</option>
+                        <option value="male-homo">Мужчина Гомосексуалист</option>
+                        <option value="female-homo">Женщина Гомосексуалист</option>
+                        <option value="male-bi">Мужчина Би</option>
+                        <option value="female-bi">Женщина Би</option>
+                        <option value="non-binary">Не бинарный</option>
+                      </Select>
+                  </FormLayout>
+
+                  <Group header={<Header mode="secondary">Ваши предпочтения</Header>}>
+                  <FormLayout>
+                      <Checkbox onChange={this.handleCheckbox} name="male-straight">Мужчина Натурал</Checkbox>
+                      <Checkbox onChange={this.handleCheckbox} name="female-straight">Женщина Натурал</Checkbox>
+                      <Checkbox onChange={this.handleCheckbox} name="male-homo">Мужчина Гомосексуалист</Checkbox>
+                      <Checkbox onChange={this.handleCheckbox} name="female-homo">Женщина Гомосексуалист</Checkbox>
+                      <Checkbox onChange={this.handleCheckbox} name="male-bi">Мужчина Би</Checkbox>
+                      <Checkbox onChange={this.handleCheckbox} name="female-bi">Женщина Би</Checkbox>
+                      <Checkbox onChange={this.handleCheckbox} name="non-binary">Не бинарный</Checkbox>
+                  <Button mode="secondary" size="xl">Обновить</Button>
+                  </FormLayout>
+                  </Group>
+
+                </Group>
+              </Panel>
+        </View>
           
         </Epic>
       )
