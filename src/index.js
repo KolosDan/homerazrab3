@@ -32,7 +32,8 @@ class Example extends React.Component {
         access_token : "",
         register : true,
         loader : true,
-        pref : []
+        pref : [],
+        users : []
       };
       this.onStoryChange = this.onStoryChange.bind(this);
       this.handleChange = this.handleChange.bind(this);
@@ -70,6 +71,8 @@ class Example extends React.Component {
       .then(function (response) {
         console.log(response.data.result)
         parent_context.setState({ loader:false })
+        parent_context.setState({ users : response.data.result })
+        console.log(parent_context.state.users)
       })
       .catch(function (error) {
         console.log(error);
