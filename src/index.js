@@ -383,7 +383,7 @@ class Example extends React.Component {
               <Checkbox onChange={this.handleCheckbox} name="male-bi">Мужчина Би</Checkbox>
               <Checkbox onChange={this.handleCheckbox} name="female-bi">Женщина Би</Checkbox>
               <Checkbox onChange={this.handleCheckbox} name="non-binary">Не бинарный</Checkbox>
-           <Button mode="secondary" onClick={() => { this.register_user(); this.props.setIndex() }} size="xl">Продолжить</Button>
+           <Button mode="secondary" onClick={() => { this.register_user(); }} size="xl">Продолжить</Button>
           </FormLayout>
           </Group>
 
