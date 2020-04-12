@@ -77,13 +77,13 @@ class Example extends React.Component {
            if (response.data.result == "no"){
             curret_this.setState({register : true})
             curret_this.setState({loader : false})
+            curret_this.setState({ready : true});
            }
            else {
             curret_this.setState({register : false});
             curret_this.setState({loader : false})
             user_global_api = response.data.result;
             curret_this.setState({ready : true});
-            console.log("CHO BLYAT")
           };
           })
           .catch(function (error) {
