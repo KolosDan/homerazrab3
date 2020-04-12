@@ -252,7 +252,7 @@ class Example extends React.Component {
                       <Checkbox checked={user_global_api.preferences.indexOf("male-bi") == -1 ? false : true} onChange={this.handleCheckbox} name="male-bi">Мужчина Би</Checkbox>
                       <Checkbox checked={user_global_api.preferences.indexOf("female-bi") == -1 ? false : true} onChange={this.handleCheckbox} name="female-bi">Женщина Би</Checkbox>
                       <Checkbox checked={user_global_api.preferences.indexOf("non-binary") == -1 ? false : true} onChange={this.handleCheckbox} name="non-binary">Не бинарный</Checkbox>
-                  <Button mode="secondary" size="xl">Обновить</Button>
+                  <Button mode="secondary" size="xl" onClick={() => { console.log(document.getElementsByName("female-straight")) }} >Сохранить изменения</Button>
                   </FormLayout>
                   </Group>
 
@@ -311,8 +311,6 @@ class Example extends React.Component {
 
     register_user() {
       parent_context.setState({loader: true})
-      console.log(user_groups)
-      let curret_this = this;
       instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/signup', {
         user_id: user_obj.id,
         age: this.state.age,
@@ -327,20 +325,10 @@ class Example extends React.Component {
             alert(response.data.error);
           }
           else{
-            // user_global_api.age = curret_this.state.age;
-            // user_global_api.geo = user_obj.city.title;
-            // user_global_api.preferences = curret_this.state.pref;
-            // user_global_api.gender = curret_this.state.sex;
-            // user_global_api.description = curret_this.state.description;
-            // user_global_api.interests = [];
-            // parent_context.setState({register: false})
-            // parent_context.setState({loader: false})
-
             instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/get_user', {
               user_id: user_obj.id,
             })
             .then(function (response) {
-              // console.log(response.data.result)
              if (response.data.result == "no"){
               alert("wtf??")
              }
