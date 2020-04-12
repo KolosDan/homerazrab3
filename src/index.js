@@ -334,6 +334,7 @@ class Example extends React.Component {
             user_global_api.description = curret_this.state.description;
             user_global_api.interests = [];
             parent_context.setState({register: false})
+            parent_context.setState({loader: false})
           }
         })
         .catch(function (error) {
