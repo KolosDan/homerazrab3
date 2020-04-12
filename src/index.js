@@ -66,13 +66,12 @@ class Example extends React.Component {
 
         if (e.detail.type === "VKWebAppGetUserInfoResult") {
           user_obj = e.detail.data;
-          console.log(user_obj);
-          
+                    
           instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/get_user', {
             user_id: user_obj.id,
           })
           .then(function (response) {
-            console.log(response.data.result)
+            // console.log(response.data.result)
            if (response.data.result == "no"){
             curret_this.setState({register : true})
             curret_this.setState({loader : false})
@@ -298,7 +297,6 @@ class Example extends React.Component {
 
     handleCheckbox(e) {
       const { name, value } = e.currentTarget;
-      console.log(name, value );
       if (e.currentTarget.checked){
         this.state.pref.push(name);
       }else{
@@ -345,6 +343,7 @@ class Example extends React.Component {
                 parent_context.setState({register : false});
                 parent_context.setState({loader : false})
                 user_global_api = response.data.result;
+                console.log(user_global_api);
                 parent_context.setState({ready : true});
               };
               })
