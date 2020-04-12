@@ -2,16 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { View, Panel, PanelHeader, Group, Cell, Epic, Tabbar, TabbarItem,
 List, Button , Avatar , PanelHeaderContent, PanelHeaderButton, PanelHeaderSimple,
-Radio, FormLayoutGroup, Select, FormLayout , Root , Textarea, Input, Checkbox, Header, Spinner}  from '@vkontakte/vkui';
+FormLayoutGroup, Select, FormLayout , Root , Textarea, Input, Checkbox, Header,
+Spinner, TabsItem, HorizontalScroll}  from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 import axios from 'axios';
 import Icon24Settings from '@vkontakte/icons/dist/24/settings';
 import Icon28AddOutline from '@vkontakte/icons/dist/28/add_outline';
 import Icon28Newsfeed from '@vkontakte/icons/dist/28/newsfeed';   
-import Icon28BlockOutline from '@vkontakte/icons/dist/28/block_outline';
-import Icon28Notifications from '@vkontakte/icons/dist/28/notifications';
-import Icon28UserOutline from '@vkontakte/icons/dist/28/user_outline';
-import Icon28SlidersOutline from '@vkontakte/icons/dist/28/sliders_outline';
 import * as connect from '@vkontakte/vkui-connect'; 
 
 let user_obj = {};
@@ -224,6 +221,16 @@ class Example extends React.Component {
                     <FormLayout>
                         <Textarea onChange={this.handleChange} name="description"  value={user_global_api.description}  top="О себе"/>
                     </FormLayout>
+
+                    <Group header={<Header mode="secondary">В переключателях</Header>}>
+                      <Tabs mode="buttons">
+                        <HorizontalScroll>
+                          <TabsItem selected> Люди </TabsItem>
+                          <TabsItem selected> Люди </TabsItem>
+                          <TabsItem selected> Люди </TabsItem>
+                        </HorizontalScroll>
+                      </Tabs>
+                    </Group>
 
                     <FormLayout>
                       <Select defaultValue={user_global_api.gender} name="sex" onChange={this.handleChange} top="Ваш гендер" placeholder="">
