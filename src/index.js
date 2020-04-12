@@ -317,6 +317,13 @@ class Example extends React.Component {
           if (response.data.error) {
             alert(response.data.error);
           }
+          else{
+            user_global_api.age = this.state.age;
+            user_global_api.geo = user_obj.city.title;
+            user_global_api.preferences = this.state.pref;
+            user_global_api.gender = this.state.sex;
+            user_global_api.description = this.state.description;
+          }
         })
         .catch(function (error) {
           console.log(error);
