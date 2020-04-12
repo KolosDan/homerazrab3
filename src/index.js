@@ -374,8 +374,8 @@ class Example extends React.Component {
             </Panel>
           </View>
         
-          <View id="notifiy" activePanel="notifiy">
-              <Panel id="notifiy">
+          <View id="notify" activePanel="notify">
+              <Panel id="notify">
                 <PanelHeader left={<PanelHeaderBack  data-to="messages" />}>
                       Уведомление
                 </PanelHeader>
