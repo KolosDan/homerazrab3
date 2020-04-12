@@ -149,7 +149,7 @@ class Example extends React.Component {
 
        }
        else {
-          this.setState({ current_notification : response.data.result})
+          parent_context.setState({ current_notification : response.data.result})
       };
       })
       .catch(function (error) {
