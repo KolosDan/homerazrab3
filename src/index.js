@@ -313,6 +313,31 @@ class Example extends React.Component {
                 </Group>
               </Panel>
         </View>
+
+
+        <View id="messages" activePanel="messages">
+            <Panel id="messages">
+              <PanelHeader>Уведомления</PanelHeader>
+              <Div>
+                  Ебучий текст с кнопкой внизу
+                  <Div>
+                    <Button size="xl" mode="secondary">Подробнее</Button>
+                  </Div>
+              </Div>
+              <Div>
+                  Ебучий текст с кнопкой внизу
+                  <Div>
+                    <Button size="xl" mode="secondary">Подробнее</Button>
+                  </Div>
+              </Div>
+              <Div>
+                  Ебучий текст с кнопкой внизу
+                  <Div>
+                    <Button size="xl" mode="secondary">Подробнее</Button>
+                  </Div>
+              </Div>
+            </Panel>
+          </View>
           
         </Epic>
       )
