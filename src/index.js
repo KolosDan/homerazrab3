@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { View, Panel, PanelHeader, Group, Cell, Epic, Tabbar, TabbarItem,
 List, Button , Avatar , PanelHeaderContent, PanelHeaderButton, PanelHeaderSimple,
 FormLayoutGroup, Select, FormLayout , Root , Textarea, Input, Checkbox, Header,
-Spinner, TabsItem, HorizontalScroll, Tabs, Div, PanelHeaderBack}  from '@vkontakte/vkui';
+Spinner, TabsItem, HorizontalScroll, Tabs, Div, PanelHeaderBack, Alert}  from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 import axios from 'axios';
 import Icon24Settings from '@vkontakte/icons/dist/24/settings';
@@ -360,13 +360,13 @@ class Example extends React.Component {
                             <Div>
                                 {notification.from_name} хочет с вами познакомиться
                                 <Div>
-                                <Button onClick={ () => {this.state.activeStory === 'notify'} } mode="secondary">Подробнее</Button>
+                                <Button onClick={ () => {this.state.activeView === 'notify'} } mode="secondary">Подробнее</Button>
                                 </Div>
                             </Div>)
                             }else if (notification.type == "pep"){
                                 return (
                                 <Div>
-                                  <Button onClick={ () => {this.state.activeStory === 'notify'} } mode="secondary">Подробнее</Button>
+                                  <Button onClick={ () => {this.state.activeView === 'notify'} } mode="secondary">Подробнее</Button>
                                 </Div>)
                             }
                     }
