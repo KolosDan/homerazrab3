@@ -338,8 +338,8 @@ class Example extends React.Component {
         <View id="messages" activePanel="messages">
             <Panel id="messages">
               <PanelHeader>Уведомления</PanelHeader>
-              {this.state.notifications.map((notification) =>
-              {if(notification.type == "init"){
+              {this.state.notifications.map((notification) => {
+              if (notification.type == "init"){
               <Div>
                   {notification.from_name} хочет с вами познакомиться
                   <Div>
