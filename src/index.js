@@ -94,9 +94,11 @@ class Example extends React.Component {
   
   
     render () {
-
+      
+      if (this.state.ready){
 
       if (this.state.loader){
+        console.log("loading...")
             return (
               <View id="feed" activePanel="feed">
                 <Panel id="spinner">
@@ -105,12 +107,9 @@ class Example extends React.Component {
                         <Spinner size="large" style={{ marginTop: 20 }} />
                       </div>
                 </Panel>
-                </View>
-                )
+                </View>)
       }
 
-
-      if (this.state.ready){
         if(this.state.register) { 
           return (<RegisterForm setIndex={i => this.setState({register: false})} />)
         } else { 
