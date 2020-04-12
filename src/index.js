@@ -207,25 +207,26 @@ class Example extends React.Component {
             <Group>
               <List>
               {parent_context.state.users.map((item) =>
-                <Cell
-                  before={<Avatar size={72} />}
-                  size="l"
-                  description={item.geo}
-                  bottomContent={
-                    <div style={{ display: 'flex' }}>
-                      <Button size="m">Подробнее</Button>
-                    </div>
-                  }
-                >
-                  {item.first_name} 
-                  <Tabs mode="buttons">
-                        <HorizontalScroll>
-                        {item.interests.map((interest) =>
-                          <TabsItem selected> {interest} </TabsItem>
-                        )}
-                        </HorizontalScroll>
+              <Div>
+                  <Cell
+                    before={<Avatar size={72} />}
+                    size="l"
+                    description={item.geo}
+                    bottomContent={
+                      <div style={{ display: 'flex' }}>
+                        <Button size="m">Подробнее</Button>
+                      </div>
+                    }
+                  >
+                    {item.first_name}</Cell>
+                    <Tabs mode="buttons">
+                    <HorizontalScroll>
+                    {item.interests.map((interest) =>
+                      <TabsItem selected> {interest} </TabsItem>
+                    )}
+                    </HorizontalScroll>
                   </Tabs>
-                  </Cell>
+                </Div>
                   )}
               </List>
             </Group>
