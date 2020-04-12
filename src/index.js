@@ -310,6 +310,7 @@ class Example extends React.Component {
     }
 
     register_user() {
+      parent_context.setState({loader: true})
       console.log(user_groups)
       let curret_this = this;
       instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/signup', {
