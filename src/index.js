@@ -63,6 +63,7 @@ class Example extends React.Component {
     }
 
     get_users(){
+      console.log(parent_context.state.users)
       instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/browse', {
         user_id: user_obj.id,
         filter : "default",
