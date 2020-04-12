@@ -36,6 +36,7 @@ class Example extends React.Component {
       this.onStoryChange = this.onStoryChange.bind(this);
       this.handleChange = this.handleChange.bind(this);
       this.handleCheckbox = this.handleCheckbox.bind(this); 
+      this.update_user_data = this.update_user_data.bind(this); 
     }
 
     handleChange(e) {
@@ -56,6 +57,22 @@ class Example extends React.Component {
     
     onStoryChange (e) {
       this.setState({ activeStory: e.currentTarget.dataset.story })
+    }
+
+    update_user_data(){
+      console.log(document.getElementsByName("age")[0].value)
+      // instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/edit_profile', {
+      //   user_id: user_obj.id,
+      //   age : document.getElementsByName("age")[0].value,
+
+      // })
+      // .then(function (response) {
+      //   // console.log(response.data.result)
+
+      // })
+      // .catch(function (error) {
+      //   console.log(error);
+      // });
     }
 
     componentDidMount() {
@@ -252,7 +269,7 @@ class Example extends React.Component {
                       <Checkbox checked={user_global_api.preferences.indexOf("male-bi") == -1 ? false : true} onChange={this.handleCheckbox} name="male-bi">Мужчина Би</Checkbox>
                       <Checkbox checked={user_global_api.preferences.indexOf("female-bi") == -1 ? false : true} onChange={this.handleCheckbox} name="female-bi">Женщина Би</Checkbox>
                       <Checkbox checked={user_global_api.preferences.indexOf("non-binary") == -1 ? false : true} onChange={this.handleCheckbox} name="non-binary">Не бинарный</Checkbox>
-                  <Button mode="secondary" size="xl" onClick={() => { console.log(document.getElementsByName("age")[0].value) }} >Сохранить изменения</Button>
+                  <Button mode="secondary" size="xl" onClick={() => { this.update_user_data() }} >Сохранить изменения</Button>
                   </FormLayout>
                   </Group>
 
