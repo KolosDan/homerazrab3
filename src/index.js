@@ -408,11 +408,6 @@ class Example extends React.Component {
                     before={<Avatar size={72} />}
                     size="l"
                     description={this.state.current_notification.geo}
-                    bottomContent={
-                      <div style={{ display: 'flex' }}>
-                        <Button onClick={() => {this.start_dialog(item.user_id); this.openModal() }} mode="outline" size="m">Познакомиться😉</Button>
-                      </div>
-                    }
                   >
                     {this.state.current_notification.first_name}</Cell>
                     {this.state.current_notification.description}
