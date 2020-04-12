@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { View, Panel, PanelHeader, Group, Cell, Epic, Tabbar, TabbarItem,
 List, Button , Avatar , PanelHeaderContent, PanelHeaderButton, PanelHeaderSimple,
 FormLayoutGroup, Select, FormLayout , Root , Textarea, Input, Checkbox, Header,
-Spinner, TabsItem, HorizontalScroll, Tabs, Div}  from '@vkontakte/vkui';
+Spinner, TabsItem, HorizontalScroll, Tabs, Div, PanelHeaderBack}  from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 import axios from 'axios';
 import Icon24Settings from '@vkontakte/icons/dist/24/settings';
@@ -34,7 +34,8 @@ class Example extends React.Component {
         loader : true,
         pref : [],
         users : [],
-        notifications : []
+        notifications : [],
+        popout: null
       };
       this.onStoryChange = this.onStoryChange.bind(this);
       this.handleChange = this.handleChange.bind(this);
@@ -43,6 +44,7 @@ class Example extends React.Component {
       this.get_users = this.get_users.bind(this);  
       this.start_dialog = this.start_dialog.bind(this);  
       this.get_notifications = this.get_notifications.bind(this);  
+      this.openModal = this.openModal.bind(this);
     }
     
 
@@ -135,11 +137,25 @@ class Example extends React.Component {
       this.setState({ loader:true })
     }
 
+    openModal () {
+      this.setState({ popout:
+        <Alert
+          actions={[{
+            title: 'Ок',
+            autoclose: true,
+            mode: 'cancel'
+          }]}
+          onClose={this.setState({ popout: null })}>
+          <h2>Уведомление отправлено</h2>
+        </Alert>
+      });
+    }
+
     componentDidMount() {
 
       setInterval(() => {
         this.get_notifications();
-      }, 10000);
+      }, 30000);
 
       connect.subscribe((e) => {
         console.log(e);
@@ -219,7 +235,7 @@ class Example extends React.Component {
               onClick={this.onStoryChange}
               selected={this.state.activeStory === 'discover'}
               data-story="discover"
-              text="Профиль"this
+              text="Профиль"
             ><Icon24Settings   /></TabbarItem>
             <TabbarItem
               onClick={this.onStoryChange}
@@ -250,7 +266,7 @@ class Example extends React.Component {
                     description={item.geo}
                     bottomContent={
                       <div style={{ display: 'flex' }}>
-                        <Button onClick={() => {this.start_dialog(item.user_id) }} mode="outline" size="m">Познакомиться😉</Button>
+                        <Button onClick={() => {this.start_dialog(item.user_id); this.openModal() }} mode="outline" size="m">Познакомиться😉</Button>
                       </div>
                     }
                   >
@@ -338,24 +354,33 @@ class Example extends React.Component {
         <View id="messages" activePanel="messages">
             <Panel id="messages">
               <PanelHeader>Уведомления</PanelHeader>
-              {this.state.notifications.map((notification) => {
-              if (notification.type == "init"){
-               return (
-               <Div>
-                  {notification.from_name} хочет с вами познакомиться
-                  <Div>
-                    <Button mode="secondary">Подробнее</Button>
-                  </Div>
-              </Div>
-               )
-              }else{
-                return ( <Div>
-                  <Button mode="secondary">Подробнее</Button>
-                </Div>)
-              }}
-              )}
+                  {this.state.notifications.map((notification) => {
+                      if (notification.type == "init"){
+                            return (
+                            <Div>
+                                {notification.from_name} хочет с вами познакомиться
+                                <Div>
+                                <Button onClick={ () => {this.state.activeStory === 'notify'} } mode="secondary">Подробнее</Button>
+                                </Div>
+                            </Div>)
+                            }else if (notification.type == "pep"){
+                                return (
+                                <Div>
+                                  <Button onClick={ () => {this.state.activeStory === 'notify'} } mode="secondary">Подробнее</Button>
+                                </Div>)
+                            }
+                    }
+                  )}
             </Panel>
           </View>
+        
+          <View id="notifiy" activePanel="notifiy">
+              <Panel id="notifiy">
+                <PanelHeader left={<PanelHeaderBack  data-to="messages" />}>
+                      Уведомление
+                </PanelHeader>
+              </Panel>
+         </View>
           
         </Epic>
       )
