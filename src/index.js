@@ -69,7 +69,7 @@ class Example extends React.Component {
     }
 
     start_dialog(id_to){
-      instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/start_dialog', {
+      instance.post('https://kolosyamba.pythonanywhere.com/start_dialog', {
         from: user_obj.id,
         to : id_to
       })
@@ -83,7 +83,7 @@ class Example extends React.Component {
     }
 
     get_users(){
-      instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/browse', {
+      instance.post('https://kolosyamba.pythonanywhere.com/browse', {
         user_id: user_obj.id,
         filter : "default",
         value : "hoy"
@@ -101,7 +101,7 @@ class Example extends React.Component {
     }
 
     get_notifications(){
-      instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/get_notifications', {
+      instance.post('https://kolosyamba.pythonanywhere.com/get_notifications', {
         user_id: user_obj.id,
       })
       .then(function (response) {
@@ -120,7 +120,7 @@ class Example extends React.Component {
       user_global_api.gender = document.getElementsByName("sex")[0].value;
       user_global_api.preferences = checked;
 
-      instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/edit_profile', {
+      instance.post('https://kolosyamba.pythonanywhere.com/edit_profile', {
         user_id: user_obj.id,
         age : document.getElementsByName("age")[0].value,
         description : document.getElementsByName("description")[0].value,
@@ -165,7 +165,7 @@ class Example extends React.Component {
         if (e.detail.type === "VKWebAppGetUserInfoResult") {
           user_obj = e.detail.data;
                     
-          instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/get_user', {
+          instance.post('https://kolosyamba.pythonanywhere.com/get_user', {
             user_id: user_obj.id,
           })
           .then(function (response) {
@@ -433,7 +433,7 @@ class Example extends React.Component {
 
     register_user() {
       parent_context.setState({loader: true})
-      instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/signup', {
+      instance.post('https://kolosyamba.pythonanywhere.com/signup', {
         user_id: user_obj.id,
         age: this.state.age,
         geo : user_obj.city.title,
@@ -449,7 +449,7 @@ class Example extends React.Component {
           }
           else{
             parent_context.get_users()
-            instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/get_user', {
+            instance.post('https://kolosyamba.pythonanywhere.com/get_user', {
               user_id: user_obj.id,
             })
             .then(function (response) {
