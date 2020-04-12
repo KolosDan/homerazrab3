@@ -413,9 +413,9 @@ class Example extends React.Component {
                     {this.state.current_notification.description}
                    <Tabs mode="buttons">
                     <HorizontalScroll>
-                    {this.state.current_notification.interests.map((interest) =>
+                    {/* {this.state.current_notification.interests.map((interest) =>
                       <TabsItem selected> {interest} </TabsItem>
-                    )}
+                    )} */}
                     </HorizontalScroll>
                   </Tabs>
                 </Div>
