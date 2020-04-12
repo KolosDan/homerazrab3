@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { View, Panel, PanelHeader, Group, Cell, Epic, Tabbar, TabbarItem,
 List, Button , Avatar , PanelHeaderContent, PanelHeaderButton, PanelHeaderSimple,
 FormLayoutGroup, Select, FormLayout , Root , Textarea, Input, Checkbox, Header,
-Spinner, TabsItem, HorizontalScroll, Tabs, Div, PanelHeaderBack, Alert}  from '@vkontakte/vkui';
+Spinner, TabsItem, HorizontalScroll, Tabs, Div, PanelHeaderBack, Alert, Separator}  from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 import axios from 'axios';
 import Icon24Settings from '@vkontakte/icons/dist/24/settings';
@@ -317,7 +317,9 @@ class Example extends React.Component {
                     )}
                     </HorizontalScroll>
                   </Tabs>
+                  <Separator wide />
                 </Div>
+                
                   )}
               </List>
             </Group>
@@ -400,6 +402,7 @@ class Example extends React.Component {
                                 <Div>
                                 <Button onClick={ () => { this.setState({ activeStory: "notify" }); this.get_notification_user(notification.from) } } mode="secondary">Подробнее</Button>
                                 </Div>
+                                <Separator wide />
                             </Div>)
                             }else{
                                 return (
