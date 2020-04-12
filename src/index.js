@@ -116,8 +116,8 @@ class Example extends React.Component {
 
     resolve_notification(to ,type, value){
       instance.post('https://kolosyamba.pythonanywhere.com/resolve_notification', {
-        from: user_obj.id,
-        to : to,
+        from: to,
+        to : user_obj.id,
         type : type,
         value : value
       })
