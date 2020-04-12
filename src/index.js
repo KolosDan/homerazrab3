@@ -63,6 +63,11 @@ class Example extends React.Component {
     update_user_data(){
       let checked = [];
       ["male-straight","female-straight","male-homo","female-homo","male-bi","female-bi","non-binary"].map(val => { document.getElementsByName(val)[0].checked ? checked.push(val) : console.log() })
+      user_global_api.age = document.getElementsByName("age")[0].value;
+      user_global_api.age = document.getElementsByName("description")[0].value;
+      user_global_api.age = document.getElementsByName("sex")[0].value;
+      user_global_api.preferences = checked;
+
       instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/edit_profile', {
         user_id: user_obj.id,
         age : document.getElementsByName("age")[0].value,
@@ -73,7 +78,6 @@ class Example extends React.Component {
       .then(function (response) {
         parent_context.setState({ loader:false })
         console.log(response.data.result)
-
       })
       .catch(function (error) {
         console.log(error);
@@ -102,7 +106,7 @@ class Example extends React.Component {
            }
            else {
             curret_this.setState({register : false});
-            curret_this.setState({loader : false})
+            curret_this.setState({loader : false});
             user_global_api = response.data.result;
             curret_this.setState({ready : true});
           };
