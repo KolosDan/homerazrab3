@@ -221,7 +221,7 @@ class Example extends React.Component {
                     </FormLayout>
 
                     <FormLayout>
-                      <Select name="sex" onChange={this.handleChange} top="Ваш гендер" defaultValue={user_global_api.dn}>
+                      <Select name="sex" onChange={this.handleChange} top="Ваш гендер" placeholder="">
                         <option value="male-straight">Мужчина Натурал</option>
                         <option value="female-straight">Женщина Натурал</option>
                         <option value="male-homo">Мужчина Гомосексуалист</option>
@@ -282,7 +282,6 @@ class Example extends React.Component {
       const { name, value } = e.currentTarget;
       console.log(name, value );
       this.setState({ [name]: value });
-      console.log(this.state.sex);
     }
 
     handleCheckbox(e) {
@@ -350,7 +349,7 @@ class Example extends React.Component {
             </FormLayout>
 
             <FormLayout>
-              <Select name="sex" onChange={this.handleChange} top="Ваш гендер" placeholder="">
+              <Select name="sex" onChange={this.handleChange} top="Ваш гендер" >
                 <option value="male-straight">Мужчина Натурал</option>
                 <option value="female-straight">Женщина Натурал</option>
                 <option value="male-homo">Мужчина Гомосексуалист</option>
