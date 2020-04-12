@@ -33,7 +33,8 @@ class Example extends React.Component {
         register : true,
         loader : true,
         pref : [],
-        users : []
+        users : [],
+        notifications : []
       };
       this.onStoryChange = this.onStoryChange.bind(this);
       this.handleChange = this.handleChange.bind(this);
@@ -102,7 +103,7 @@ class Example extends React.Component {
         user_id: user_obj.id,
       })
       .then(function (response) {
-        console.log(response.data.result)
+        parent_context.setState({notifications : response.data.result})
       })
       .catch(function (error) {
         console.log(error);
@@ -135,9 +136,11 @@ class Example extends React.Component {
     }
 
     componentDidMount() {
+
       setInterval(() => {
         this.get_notifications();
       }, 10000);
+
       connect.subscribe((e) => {
         console.log(e);
         let curret_this = this;
@@ -335,24 +338,16 @@ class Example extends React.Component {
         <View id="messages" activePanel="messages">
             <Panel id="messages">
               <PanelHeader>Уведомления</PanelHeader>
+              {this.state.notifications.map((notification) =>
+              {if(notification.type == "init"){
               <Div>
-                  Ебучий текст с кнопкой внизу
+                  {notification.from_name} хочет с вами познакомиться
                   <Div>
                     <Button mode="secondary">Подробнее</Button>
                   </Div>
               </Div>
-              <Div>
-                  Ебучий текст с кнопкой внизу
-                  <Div>
-                    <Button mode="secondary">Подробнее</Button>
-                  </Div>
-              </Div>
-              <Div>
-                  Ебучий текст с кнопкой внизу
-                  <Div>
-                    <Button mode="secondary">Подробнее</Button>
-                  </Div>
-              </Div>
+              }}
+              )}
             </Panel>
           </View>
           
