@@ -217,7 +217,8 @@ class Example extends React.Component {
                     </div>
                   }
                 >
-                  {item.first_name}</Cell>
+                  {item.first_name} 
+                   <TabsItem selected> {item.interests} </TabsItem></Cell>
                   )}
               </List>
             </Group>
