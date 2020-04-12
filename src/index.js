@@ -82,8 +82,8 @@ class Example extends React.Component {
             curret_this.setState({register : false});
             curret_this.setState({loader : false})
             user_global_api = response.data.result;
-            console.log(user_global_api);
             curret_this.setState({ready : true});
+            console.log("CHO BLYAT")
           };
           })
           .catch(function (error) {
@@ -113,20 +113,20 @@ class Example extends React.Component {
   
     render () {
 
+      if (this.state.loader){
+        return (
+         <View activePanel="spinner">
+          <Panel id="spinner">
+            <PanelHeader>Loading...</PanelHeader>
+            <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+              <Spinner size="large" style={{ marginTop: 100 }} />
+            </div>
+          </Panel>
+        </View>)
+      }
+
 
       if (this.state.ready){
-    //     if (this.state.loader){
-    //       return (
-    //        <View activePanel="spinner">
-    //         <Panel id="spinner">
-    //           <PanelHeader>Loading...</PanelHeader>
-    //           <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
-    //             <Spinner size="large" style={{ marginTop: 100 }} />
-    //           </div>
-    //         </Panel>
-    //       </View>)
-    // }
-
         if(this.state.register) { 
           return (<RegisterForm setIndex={i => this.setState({register: false})} />)
         } else { 
