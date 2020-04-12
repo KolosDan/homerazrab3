@@ -71,7 +71,7 @@ class Example extends React.Component {
         preferences : checked
       })
       .then(function (response) {
-        this.setState({ loader:false })
+        parent_context.setState({ loader:false })
         console.log(response.data.result)
 
       })
