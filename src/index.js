@@ -220,7 +220,8 @@ class Example extends React.Component {
                     }
                   >
                     {item.first_name}</Cell>
-                   Интересы:  <Tabs mode="buttons">
+                    {item.description}
+                   <Tabs mode="buttons">
                     <HorizontalScroll>
                     {item.interests.map((interest) =>
                       <TabsItem selected> {interest} </TabsItem>
