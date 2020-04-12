@@ -121,7 +121,7 @@ class Example extends React.Component {
             curret_this.setState({ready : true});
            }
            else {
-            this.get_users()
+            curret_this.get_users()
             curret_this.setState({register : false});
             curret_this.setState({loader : false});
             user_global_api = response.data.result;
