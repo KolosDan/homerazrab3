@@ -32,7 +32,8 @@ class Example extends React.Component {
         ready : false,
         activeStory: 'feed', 
         access_token : "",
-        register : true
+        register : true,
+        loader : true
       };
       this.onStoryChange = this.onStoryChange.bind(this);
       this.onStoryChange = this.onStoryChange.bind(this);
@@ -46,7 +47,7 @@ class Example extends React.Component {
       connect.subscribe((e) => {
         console.log(e);
         let curret_this = this;
-        
+
         if (e.detail.type === "VKWebAppGetUserInfoResult") {
           user_obj = e.detail.data;
           console.log(user_obj);
@@ -59,17 +60,20 @@ class Example extends React.Component {
             console.log(response.data.result)
            if (response.data.result == "no"){
             curret_this.setState({register : true})
+            curret_this.setState({loader : false})
            }
            else {
             curret_this.setState({register : false});
-            console.log(curret_this.state.register);
+            curret_this.setState({loader : false})
           };
           })
           .catch(function (error) {
             console.log(error);
           });
 
-        }
+        }          <Spinner size="medium" style={{ marginTop: 20 }} />
+        <Spinner size="regular" style={{ marginTop: 20 }} />
+        <Spinner size="small" style={{ marginTop: 20 }} />
         else if (e.detail.type === "VKWebAppAccessTokenReceived") {
           this.state.access_token = e.detail.data.access_token;
           connect.send("VKWebAppCallAPIMethod", {
@@ -91,6 +95,15 @@ class Example extends React.Component {
   
   
     render () {
+      if (this.state.loader){
+        return (
+        <Panel id="spinner">
+        <PanelHeader>Spinner</PanelHeader>
+        <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+          <Spinner size="large" style={{ marginTop: 20 }} />
+        </div>
+      </Panel>)
+      }
       if (this.state.ready){
         if(this.state.register) { 
           return (<RegisterForm setIndex={i => this.setState({register: false})} />)
