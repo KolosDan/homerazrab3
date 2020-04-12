@@ -115,17 +115,17 @@ class Example extends React.Component {
 
 
       if (this.state.ready){
-        if (this.state.loader){
-          return (
-           <View activePanel="spinner">
-            <Panel id="spinner">
-              <PanelHeader>Loading...</PanelHeader>
-              <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
-                <Spinner size="large" style={{ marginTop: 100 }} />
-              </div>
-            </Panel>
-          </View>)
-    }
+    //     if (this.state.loader){
+    //       return (
+    //        <View activePanel="spinner">
+    //         <Panel id="spinner">
+    //           <PanelHeader>Loading...</PanelHeader>
+    //           <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+    //             <Spinner size="large" style={{ marginTop: 100 }} />
+    //           </div>
+    //         </Panel>
+    //       </View>)
+    // }
 
         if(this.state.register) { 
           return (<RegisterForm setIndex={i => this.setState({register: false})} />)
