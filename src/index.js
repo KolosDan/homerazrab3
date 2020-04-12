@@ -47,6 +47,7 @@ class Example extends React.Component {
       this.get_notifications = this.get_notifications.bind(this);  
       this.openModal = this.openModal.bind(this);
       this.get_notification_user = this.get_notification_user.bind(this);
+      this.resolve_notification = this.resolve_notification.bind(this);
     }
     
 
@@ -107,6 +108,21 @@ class Example extends React.Component {
       })
       .then(function (response) {
         parent_context.setState({notifications : response.data.result})
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
+
+    resolve_notification(to ,type, value){
+      instance.post('https://kolosyamba.pythonanywhere.com/resolve_notification', {
+        from: user_obj.id,
+        to : to,
+        type : type,
+        value : value
+      })
+      .then(function (response) {
+
       })
       .catch(function (error) {
         console.log(error);
@@ -400,7 +416,7 @@ class Example extends React.Component {
           {this.state.current_notification != {} ? 
           <View id="notify" activePanel="notify">
               <Panel id="notify">
-                <PanelHeader left={<PanelHeaderBack  data-to="messages" />}>
+                <PanelHeader left={<PanelHeaderBack onClick={ () => {this.setState({ activeStory: "messages" });}}  />}>
                       Уведомление
                 </PanelHeader>
                 <Div>
@@ -419,8 +435,8 @@ class Example extends React.Component {
                     </HorizontalScroll>
                   </Tabs>
                   <Div style={{display: 'flex'}}>
-                    <Button size="l" stretched mode="commerce">Принять</Button>
-                    <Button size="l" stretched mode="destructive">Отклонить</Button>
+                    <Button size="l" onClick={ () => { this.resolve_notification(this.state.current_notification.user_id, "init", true) } }  stretched mode="commerce">Принять</Button>
+                    <Button size="l" onClick={ () => { this.resolve_notification(this.state.current_notification.user_id, "init", false) } }  stretched mode="destructive">Отклонить</Button>
                   </Div>
                 </Div>
               </Panel>
