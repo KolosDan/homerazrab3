@@ -68,7 +68,6 @@ class Example extends React.Component {
         if (e.detail.type === "VKWebAppGetUserInfoResult") {
           user_obj = e.detail.data;
           console.log(user_obj);
-          this.setState({ready : true});
           
           instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/get_user', {
             user_id: user_obj.id,
@@ -84,6 +83,7 @@ class Example extends React.Component {
             curret_this.setState({loader : false})
             user_global_api = response.data.result;
             console.log(user_global_api);
+            curret_this.setState({ready : true});
           };
           })
           .catch(function (error) {
