@@ -102,12 +102,9 @@ class Example extends React.Component {
             return (
              <View activePanel="spinner">
               <Panel id="spinner">
-                <PanelHeader>Spinner</PanelHeader>
+                <PanelHeader>Loading...</PanelHeader>
                 <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
-                  <Spinner size="large" style={{ marginTop: 20 }} />
-                  <Spinner size="medium" style={{ marginTop: 20 }} />
-                  <Spinner size="regular" style={{ marginTop: 20 }} />
-                  <Spinner size="small" style={{ marginTop: 20 }} />
+                  <Spinner size="large" style={{ marginTop: 100 }} />
                 </div>
               </Panel>
             </View>)
