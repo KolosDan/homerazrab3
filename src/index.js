@@ -204,6 +204,7 @@ class Example extends React.Component {
                   >
                     <PanelHeaderContent
                       before={<Avatar size={48} src={user_obj.photo_100} />}
+                      description="VKontakte"
                     >
                       {user_obj.first_name} {user_obj.last_name}
                     </PanelHeaderContent>
