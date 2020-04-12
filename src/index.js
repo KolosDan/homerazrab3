@@ -360,13 +360,13 @@ class Example extends React.Component {
                             <Div>
                                 {notification.from_name} хочет с вами познакомиться
                                 <Div>
-                                <Button onClick={ () => {this.state.activeView === 'notify'} } mode="secondary">Подробнее</Button>
+                                <Button onClick={ () => { this.setState({ activeView: "notify" }); } } mode="secondary">Подробнее</Button>
                                 </Div>
                             </Div>)
                             }else if (notification.type == "pep"){
                                 return (
                                 <Div>
-                                  <Button onClick={ () => {this.state.activeView === 'notify'} } mode="secondary">Подробнее</Button>
+                                  <Button onClick={ () => {this.setState({ activeView: "notify" }); } } mode="secondary">Подробнее</Button>
                                 </Div>)
                             }
                     }
