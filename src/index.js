@@ -36,7 +36,7 @@ class Example extends React.Component {
         users : [],
         notifications : [],
         popout: null,
-        current_notification : {}
+        current_notification : {interests : []}
       };
       this.onStoryChange = this.onStoryChange.bind(this);
       this.handleChange = this.handleChange.bind(this);
