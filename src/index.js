@@ -105,7 +105,6 @@ class Example extends React.Component {
       })
       .then(function (response) {
         parent_context.setState({notifications : response.data.result})
-        console.log(this.state.notifications)
       })
       .catch(function (error) {
         console.log(error);
@@ -361,13 +360,13 @@ class Example extends React.Component {
                             <Div>
                                 {notification.from_name} хочет с вами познакомиться
                                 <Div>
-                                <Button onClick={ () => { this.setState({ activeView: "notify" }); } } mode="secondary">Подробнее</Button>
+                                <Button onClick={ () => { this.setState({ activeStory: "notify" }); } } mode="secondary">Подробнее</Button>
                                 </Div>
                             </Div>)
                             }else{
                                 return (
                                 <Div>
-                                  <Button onClick={ () => {this.setState({ activeView: "notify" }); } } mode="secondary">Подробнее</Button>
+                                  <Button onClick={ () => {this.setState({ activeStory: "notify" }); } } mode="secondary">Подробнее</Button>
                                 </Div>)
                             }
                     }
