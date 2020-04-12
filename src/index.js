@@ -340,12 +340,18 @@ class Example extends React.Component {
               <PanelHeader>Уведомления</PanelHeader>
               {this.state.notifications.map((notification) => {
               if (notification.type == "init"){
-              <Div>
+               return (
+               <Div>
                   {notification.from_name} хочет с вами познакомиться
                   <Div>
                     <Button mode="secondary">Подробнее</Button>
                   </Div>
               </Div>
+               )
+              }else{
+                return ( <Div>
+                  <Button mode="secondary">Подробнее</Button>
+                </Div>)
               }}
               )}
             </Panel>
