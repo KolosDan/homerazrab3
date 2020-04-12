@@ -45,27 +45,30 @@ class Example extends React.Component {
     componentDidMount() {
       connect.subscribe((e) => {
         console.log(e);
+        let curret_this = this;
         
         if (e.detail.type === "VKWebAppGetUserInfoResult") {
           user_obj = e.detail.data;
           console.log(user_obj);
           this.setState({ready : true});
+          
           instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/get_user', {
             user_id: user_obj.id,
           })
           .then(function (response) {
             console.log(response.data.result)
            if (response.data.result == "no"){
-             this.setState({register : true})
+            curret_this.setState({register : true})
            }
            else {
-            this.setState({register : false});
-            console.log(this.state.register);
+            curret_this.setState({register : false});
+            console.log(curret_this.state.register);
           };
           })
           .catch(function (error) {
             console.log(error);
           });
+
         }
         else if (e.detail.type === "VKWebAppAccessTokenReceived") {
           this.state.access_token = e.detail.data.access_token;
