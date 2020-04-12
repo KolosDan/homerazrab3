@@ -71,9 +71,7 @@ class Example extends React.Component {
             console.log(error);
           });
 
-        }          <Spinner size="medium" style={{ marginTop: 20 }} />
-        <Spinner size="regular" style={{ marginTop: 20 }} />
-        <Spinner size="small" style={{ marginTop: 20 }} />
+        }
         else if (e.detail.type === "VKWebAppAccessTokenReceived") {
           this.state.access_token = e.detail.data.access_token;
           connect.send("VKWebAppCallAPIMethod", {
