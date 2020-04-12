@@ -35,7 +35,8 @@ class Example extends React.Component {
         pref : [],
         users : [],
         notifications : [],
-        popout: null
+        popout: null,
+        current_notification : {}
       };
       this.onStoryChange = this.onStoryChange.bind(this);
       this.handleChange = this.handleChange.bind(this);
@@ -45,6 +46,7 @@ class Example extends React.Component {
       this.start_dialog = this.start_dialog.bind(this);  
       this.get_notifications = this.get_notifications.bind(this);  
       this.openModal = this.openModal.bind(this);
+      this.get_notification_user = this.get_notification_user.bind(this);
     }
     
 
@@ -135,6 +137,27 @@ class Example extends React.Component {
       });
       this.setState({ loader:true })
     }
+
+    get_notification_user(id){
+
+      instance.post('https://kolosyamba.pythonanywhere.com/get_user', {
+        user_id: id,
+      })
+      .then(function (response) {
+        // console.log(response.data.result)
+       if (response.data.result == "no"){
+
+       }
+       else {
+          this.setState({ current_notification : response.data.result})
+      };
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
+
+
 
     openModal () {
       this.setState({ popout:
@@ -354,19 +377,18 @@ class Example extends React.Component {
             <Panel id="messages">
               <PanelHeader>Уведомления</PanelHeader>
                   {this.state.notifications.map((notification) => {
-                    console.log(notification)
                       if (notification.type == "init"){
                             return (
                             <Div>
                                 {notification.from_name} хочет с вами познакомиться
                                 <Div>
-                                <Button onClick={ () => { this.setState({ activeStory: "notify" }); } } mode="secondary">Подробнее</Button>
+                                <Button onClick={ () => { this.setState({ activeStory: "notify" }); this.get_notification_user(notification.from) } } mode="secondary">Подробнее</Button>
                                 </Div>
                             </Div>)
                             }else{
                                 return (
                                 <Div>
-                                  <Button onClick={ () => {this.setState({ activeStory: "notify" }); } } mode="secondary">Подробнее</Button>
+                                  <Button onClick={ () => {this.setState({ activeStory: "notify" }); this.get_notification_user(notification.from)} } mode="secondary">Подробнее</Button>
                                 </Div>)
                             }
                     }
@@ -374,13 +396,36 @@ class Example extends React.Component {
             </Panel>
           </View>
         
+        
+          {this.state.current_notification != {} ? 
           <View id="notify" activePanel="notify">
               <Panel id="notify">
                 <PanelHeader left={<PanelHeaderBack  data-to="messages" />}>
                       Уведомление
                 </PanelHeader>
+                <Div>
+                  <Cell
+                    before={<Avatar size={72} />}
+                    size="l"
+                    description={this.state.current_notification.geo}
+                    bottomContent={
+                      <div style={{ display: 'flex' }}>
+                        <Button onClick={() => {this.start_dialog(item.user_id); this.openModal() }} mode="outline" size="m">Познакомиться😉</Button>
+                      </div>
+                    }
+                  >
+                    {this.state.current_notification.first_name}</Cell>
+                    {this.state.current_notification.description}
+                   <Tabs mode="buttons">
+                    <HorizontalScroll>
+                    {this.state.current_notification.interests.map((interest) =>
+                      <TabsItem selected> {interest} </TabsItem>
+                    )}
+                    </HorizontalScroll>
+                  </Tabs>
+                </Div>
               </Panel>
-         </View>
+         </View> : <Div></Div>}
           
         </Epic>
       )
