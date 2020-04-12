@@ -304,6 +304,7 @@ class Example extends React.Component {
 
     register_user() {
       console.log(user_groups)
+      let curret_this = this;
       instance.post('https://cors-anywhere.herokuapp.com/http://35.228.42.210:5000/signup', {
         user_id: user_obj.id,
         age: this.state.age,
@@ -318,11 +319,11 @@ class Example extends React.Component {
             alert(response.data.error);
           }
           else{
-            user_global_api.age = this.state.age;
+            user_global_api.age = curret_this.state.age;
             user_global_api.geo = user_obj.city.title;
-            user_global_api.preferences = this.state.pref;
-            user_global_api.gender = this.state.sex;
-            user_global_api.description = this.state.description;
+            user_global_api.preferences = curret_this.state.pref;
+            user_global_api.gender = curret_this.state.sex;
+            user_global_api.description = curret_this.state.description;
           }
         })
         .catch(function (error) {
