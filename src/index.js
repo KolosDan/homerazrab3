@@ -147,6 +147,7 @@ class Example extends React.Component {
         }
         else if (e.detail.type === "VKWebAppCallAPIMethodResult") {
           if (e.detail.data.request_id === "groups.get") {
+            console.log("GOT GROUPS")
             user_groups = e.detail.data.response.items;
           }
         }
@@ -219,7 +220,7 @@ class Example extends React.Component {
                     }
                   >
                     {item.first_name}</Cell>
-                    <Tabs mode="buttons">
+                   Интересы:  <Tabs mode="buttons">
                     <HorizontalScroll>
                     {item.interests.map((interest) =>
                       <TabsItem selected> {interest} </TabsItem>
