@@ -18,13 +18,15 @@ def clean(text):
 
 def get_interests(groups):
     keywords = []
-
     for i in groups:
         try:
             keywords.extend(clean(i['name']))
-        except:
+            if i["activity"] not in ["Закрытая группа", "Открытая группа", "Частная группа", "Публичная страница"]:
+                keywords.append(i['activity'])
+        except Exception as e:
+            print(e)
             pass
 
-    return [i[0] for i in Counter(keywords).most_common(20)]
+    return [i[0] for i in Counter(keywords).most_common(10) if i[1] > 1]
     
     

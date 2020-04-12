@@ -25,6 +25,7 @@
     "@vkontakte/vkui": "^3.5.4",
     "@vkontakte/vkui-connect": "^1.5.4",
     "@vkontakte/vkui-connect-promise": "^0.2.1",
+    "axios": "^0.19.2",
     "babel-eslint": "^9.0.0",
     "core-js": "^2.6.11",
     "prop-types": "^15.7.2",
