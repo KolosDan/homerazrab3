@@ -258,6 +258,14 @@ def get_notifications():
     
     return notifications
 
+@app.route("/add_to_push", methods=["POST"])
+@exception_handler
+def add_to_push():
+    '''POST: user_id'''
+    request_data = json.loads(request.data)
+    db.push.insert_one({"user_id": request_data["user_id"]})
+    return "ok"
+
 if __name__ == "__main__":
     app.run()
 
