@@ -196,7 +196,7 @@ def resolve_notification():
 
     # HANDLER
     if notification_type == "init":
-        if db.notifications.find_one({"from": request_data["from"], "to": request_data["to"]})["last"] == True:
+        if request_data["value"] == True:
             db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "photo", "last": False, "from_name": db.users.find_one({"user_id": request_data["from"]})["first_name"]})
         else:
             db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "decline", "from_name": db.users.find_one({"user_id": request_data["from"]})["first_name"]})
