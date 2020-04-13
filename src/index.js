@@ -407,8 +407,8 @@ class Example extends React.Component {
                       }else if (notification.type == "photo"){
                           return (
                           <Div>
-                            {notification.from_name} 
-                            <Button onClick={ () => {this.setState({ activeStory: "notify" }); this.get_notification_user(notification.from)} } mode="secondary">Подробнее</Button>
+                            Фото {notification.from_name}
+                            <Button onClick={ () => {this.setState({ activeStory: "notify_photo" }); this.get_notification_user(notification.from)} } mode="secondary">Подробнее</Button>
                           </Div>)
                       }else {
                         return (
@@ -446,6 +446,38 @@ class Example extends React.Component {
                   <Div style={{display: 'flex'}}>
                     <Button size="l" onClick={ () => { this.resolve_notification(this.state.current_notification.user_id, "init", true) } }  stretched mode="commerce">Принять</Button>
                     <Button size="l" onClick={ () => { this.resolve_notification(this.state.current_notification.user_id, "init", false) } }  stretched mode="destructive">Отклонить</Button>
+                  </Div>
+                </Div>
+              </Panel>
+         </View> : <Div></Div>}
+
+         {this.state.current_notification != {} ? 
+          <View id="notify_photo" activePanel="notify_photo">
+              <Panel id="notify_photo">
+                <PanelHeader left={<PanelHeaderBack onClick={ () => {this.setState({ activeStory: "messages" });}}  />}>
+                      Уведомление
+                </PanelHeader>
+                <Div>
+                  <Cell
+                    before={<Avatar size={72} />}
+                    size="l"
+                    description={this.state.current_notification.geo}
+                  >
+                    {this.state.current_notification.first_name}</Cell>
+                    <Group header={<Header mode="secondary">Фото</Header>}>
+                      <Gallery
+                        slideWidth="100%"
+                        style={{ height: 150 }}
+                        bullets="dark"
+                      >
+                        <div style={{ backgroundColor: 'var(--destructive)' }} />
+                        <div style={{ backgroundColor: 'var(--button_commerce_background)' }} />
+                        <div style={{ backgroundColor: 'var(--accent)' }} />
+                      </Gallery>
+                    </Group>
+                  <Div style={{display: 'flex'}}>
+                    <Button size="l" onClick={ () => { this.resolve_notification(this.state.current_notification.user_id, "photo", true) } }  stretched mode="commerce">Принять</Button>
+                    <Button size="l" onClick={ () => { this.resolve_notification(this.state.current_notification.user_id, "photo", false) } }  stretched mode="destructive">Отклонить</Button>
                   </Div>
                 </Div>
               </Panel>
