@@ -197,7 +197,7 @@ def resolve_notification():
     # HANDLER
     if notification_type == "init":
         if request_data["value"] == True:
-            db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "photo"})
+            db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "photo", "last": False})
         else:
             db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "decline"})
     
@@ -206,19 +206,34 @@ def resolve_notification():
     
     elif notification_type == "photo":
         if request_data["value"] == True:
-            db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "q_set"})
+            if request_data["last"]:
+                db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "q_set", "last": False})
+            else:
+                db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "photo", "last": True})
         else:
             db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "decline"})
     
     elif notification_type == "q_set":
-        db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "q_answer", "value": request_data["value"]})
+        if request_data["last"]:
+            db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "q_answer", "value": request_data["value"], "last": False})
+        else:
+            db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "q_set", "last": True})
+
 
     elif notification_type == "q_answer":
-        db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "q_resolve", "value": request_data["value"]})
+        if request_data["last"]:
+            db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "q_resolve", "value": request_data["value"], "last": False})
+        else:
+            db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "q_answer", "value": request_data["value"], "last": True})
+
 
     elif notification_type == "q_resolve":
         if request_data["value"] == True:
-            db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "match"})
+            if request_data["last"]:
+                db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "match"})
+                db.notifications.insert_one({"from": request_data["from"], "to": request_data["to"], "type": "match"})
+            else:
+                db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "q_resolve", "last": True})
         else:
             db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "decline"})
 
