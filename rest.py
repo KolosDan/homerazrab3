@@ -89,8 +89,13 @@ def get_user():
         raise Exception("InvalidArgs", "Missing args: %s" % ' '.join(args - set(request_data.keys())))
     
     result = db.users.find_one({"user_id": request_data["user_id"]})
+    
     if result != None:
         del result["_id"]
+        if db.push.find_one({"user_id": request_data["user_id"]}) != None:
+            result["notify"] = True
+        else:
+            result["notify"] = False
         return result
     else:
         return "no"
