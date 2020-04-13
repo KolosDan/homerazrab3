@@ -36,7 +36,8 @@ class Example extends React.Component {
         users : [],
         notifications : [],
         popout: null,
-        current_notification : {interests : []}
+        current_notification : {interests : []},
+        notification_count : 0
       };
       this.onStoryChange = this.onStoryChange.bind(this);
       this.handleChange = this.handleChange.bind(this);
@@ -108,6 +109,7 @@ class Example extends React.Component {
       })
       .then(function (response) {
         parent_context.setState({notifications : response.data.result})
+        parent_context.setState({notification_count : response.data.result.length})
       })
       .catch(function (error) {
         console.log(error);
@@ -285,7 +287,7 @@ class Example extends React.Component {
               onClick={this.onStoryChange}
               selected={this.state.activeStory === 'messages'}
               data-story="messages"
-              label="12"
+              label={this.state.notification_count}
               text="Уведомления"
             ><Icon28Newsfeed /></TabbarItem>
           </Tabbar>
