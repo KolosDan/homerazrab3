@@ -8,7 +8,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-db = MongoClient().dating
+db = MongoClient("mongodb://35.228.42.210:27017", connect=False, maxPoolSize=1).dating
 
 def exception_handler(func):
     @wraps(func)
@@ -177,7 +177,7 @@ def start_dialog():
     db.notifications.insert_one({"from": request_data['from'], "to": request_data["to"], "type": "init", "from_name": db.users.find_one({"user_id": request_data["from"]})["first_name"] })
     return "ok"
 
-@app.route("/resolve_notification")
+@app.route("/resolve_notification", methods=["POST"])
 @exception_handler
 def resolve_notification():
     '''POST. Request Data:
@@ -197,9 +197,9 @@ def resolve_notification():
     # HANDLER
     if notification_type == "init":
         if request_data["value"] == True:
-            db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "photo", "last": False})
+            db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "photo", "last": False, "from_name": db.users.find_one({"user_id": request_data["from"]})["first_name"]})
         else:
-            db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "decline"})
+            db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "decline", "from_name": db.users.find_one({"user_id": request_data["from"]})["first_name"]})
     
     elif notification_type == "decline":
         pass
@@ -207,35 +207,35 @@ def resolve_notification():
     elif notification_type == "photo":
         if request_data["value"] == True:
             if request_data["last"]:
-                db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "q_set", "last": False})
+                db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "q_set", "last": False, "from_name": db.users.find_one({"user_id": request_data["from"]})["first_name"]})
             else:
-                db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "photo", "last": True})
+                db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "photo", "last": True, "from_name": db.users.find_one({"user_id": request_data["from"]})["first_name"]})
         else:
-            db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "decline"})
+            db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "decline", "from_name": db.users.find_one({"user_id": request_data["from"]})["first_name"]})
     
     elif notification_type == "q_set":
         if request_data["last"]:
-            db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "q_answer", "value": request_data["value"], "last": False})
+            db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "q_answer", "value": request_data["value"], "last": False, "from_name": db.users.find_one({"user_id": request_data["from"]})["first_name"]})
         else:
-            db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "q_set", "last": True})
+            db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "q_set", "last": True, "from_name": db.users.find_one({"user_id": request_data["from"]})["first_name"]})
 
 
     elif notification_type == "q_answer":
         if request_data["last"]:
-            db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "q_resolve", "value": request_data["value"], "last": False})
+            db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "q_resolve", "value": request_data["value"], "last": False, "from_name": db.users.find_one({"user_id": request_data["from"]})["first_name"]})
         else:
-            db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "q_answer", "value": request_data["value"], "last": True})
+            db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "q_answer", "value": request_data["value"], "last": True, "from_name": db.users.find_one({"user_id": request_data["from"]})["first_name"]})
 
 
     elif notification_type == "q_resolve":
         if request_data["value"] == True:
             if request_data["last"]:
-                db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "match"})
-                db.notifications.insert_one({"from": request_data["from"], "to": request_data["to"], "type": "match"})
+                db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "match", "from_name": db.users.find_one({"user_id": request_data["from"]})["first_name"]})
+                db.notifications.insert_one({"from": request_data["from"], "to": request_data["to"], "type": "match", "from_name": db.users.find_one({"user_id": request_data["from"]})["first_name"]})
             else:
-                db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "q_resolve", "last": True})
+                db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "q_resolve", "last": True, "from_name": db.users.find_one({"user_id": request_data["from"]})["first_name"]})
         else:
-            db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "decline"})
+            db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "decline", "from_name": db.users.find_one({"user_id": request_data["from"]})["first_name"]})
 
     db.notifications.delete_one({"from": request_data["from"], "to": request_data["to"], "type": notification_type})
 
@@ -259,7 +259,7 @@ def get_notifications():
     return notifications
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    app.run()
 
 # - type: str (init / photo / questions / answers)
 #     - value: init: None, photo: None, questions: str[]
