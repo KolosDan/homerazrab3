@@ -230,8 +230,8 @@ def resolve_notification():
     elif notification_type == "q_resolve":
         if request_data["value"] == True:
             if db.notifications.find_one({"from": request_data["from"], "to": request_data["to"]})["last"]:
-                db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "match", "from_name": db.users.find_one({"user_id": request_data["from"]})["first_name"]})
-                db.notifications.insert_one({"from": request_data["from"], "to": request_data["to"], "type": "match", "from_name": db.users.find_one({"user_id": request_data["from"]})["first_name"]})
+                db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "match", "value": ['',''], "from_name": db.users.find_one({"user_id": request_data["from"]})["first_name"]})
+                db.notifications.insert_one({"from": request_data["from"], "to": request_data["to"], "type": "match", "value": ['',''], "from_name": db.users.find_one({"user_id": request_data["to"]})["first_name"]})
             else:
                 db.notifications.insert_one({"from": request_data["to"], "to": request_data["from"], "type": "q_set", "last": True, "from_name": db.users.find_one({"user_id": request_data["from"]})["first_name"]})
         else:
