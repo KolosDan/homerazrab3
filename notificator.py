@@ -13,7 +13,7 @@ def call_vk(method, access_token, **kwargs):
         raise Exception('ApiException', response['error']['error_msg'])
 
 db = MongoClient("mongodb://35.228.42.210:27017").dating
-token = '7fff76e57fff76e57fff76e5227f8f808777fff7fff76e5216bb1462ce9a8aa191e9040'
+token = 'TOKEN'
     
 while True:
     notifications = [(i['from'], i['to'], i['type']) for i in db.notifications.find()]
