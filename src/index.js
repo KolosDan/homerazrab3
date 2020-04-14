@@ -49,13 +49,13 @@ class Example extends React.Component {
         questions_value : ["",""],
         user_photos : [],
         gender_mapping : {
-          "male-straight": "Мужчина Натурал", 
-          "female-straight": "Женщина Натурал",
-          "male-homo": "Мужчина Гомосексуалист",
-          "female-homo": "Женщина Гомосексуалист",
-          "male-bi": "Мужчина Бисексуал",
-          "female-bi": "Женщина Бисексуал",
-          "non-binary": "Не бинарный"
+          "male-straight": "Мужчина, гетеросексуальный", 
+          "female-straight": "Женщина, гетеросексуальная",
+          "male-homo": "Мужчина, гомосексуальный",
+          "female-homo": "Женщина, гомосексуальная",
+          "male-bi": "Мужчина, бисексуальныйсексуал",
+          "female-bi": "Женщина, бисексуальнаясексуал",
+          "non-binary": "Другое"
          },
         avatar_links : ['https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/green-apple.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/red-apple.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/pear.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/tangerine.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/lemon.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/banana.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/watermelon.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/grapes.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/strawberry.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/melon.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/cherries.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/peach.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/mango.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/pineapple.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/coconut.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/kiwi-fruit.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/tomato.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/eggplant.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/avocado.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/broccoli.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/leafy-green.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/cucumber.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/hot-pepper.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/ear-of-corn.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/carrot.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/potato.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/roasted-sweet-potato.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/croissant.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/bagel.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/bread.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/baguette-bread.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/pretzel.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/cheese-wedge.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/egg.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/cooking.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/pancakes.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/bacon.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/cut-of-meat.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/poultry-leg.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/meat-on-bone.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/bone.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/hot-dog.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/hamburger.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/french-fries.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/pizza.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/sandwich.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/stuffed-flatbread.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/taco.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/burrito.png', 
         'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/green-salad.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/shallow-pan-of-food.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/canned-food.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/spaghetti.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/steaming-bowl.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/pot-of-food.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/curry-rice.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/sushi.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/bento-box.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/dumpling.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/fried-shrimp.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/rice-ball.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/cooked-rice.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/rice-cracker.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/fish-cake-with-swirl.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/fortune-cookie.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/moon-cake.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/oden.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/dango.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/shaved-ice.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/ice-cream.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/soft-ice-cream.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/pie.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/dog-face.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/cat-face.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/mouse-face.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/hamster-face.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/rabbit-face.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/fox-face.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/bear-face.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/panda-face.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/koala.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/tiger-face.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/lion-face.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/cow-face.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/pig-face.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/pig-nose.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/frog-face.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/monkey-face.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/see-no-evil-monkey.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/hear-no-evil-monkey.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/speak-no-evil-monkey.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/monkey.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/chicken.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/penguin.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/bird.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/baby-chick.png', 'https://d2trtkcohkrm90.cloudfront.net/images/emoji/apple/ios-12/128/hatching-chick.png',
@@ -421,26 +421,26 @@ class Example extends React.Component {
                     </Group>
 
                     <FormLayout>
-                      <Select defaultValue={user_global_api.gender} name="sex" onChange={this.handleChange} top="Ваш гендер" placeholder="">
-                        <option value="male-straight">Мужчина Натурал</option>
-                        <option value="female-straight">Женщина Натурал</option>
-                        <option value="male-homo">Мужчина Гомосексуалист</option>
-                        <option value="female-homo">Женщина Гомосексуалист</option>
-                        <option value="male-bi">Мужчина Би</option>
-                        <option value="female-bi">Женщина Би</option>
-                        <option value="non-binary">Не бинарный</option>
+                      <Select defaultValue={user_global_api.gender} name="sex" onChange={this.handleChange} top="Укажите ваш пол и ориентацию" placeholder="">
+                        <option value="male-straight">Мужчина, гетеросексуальный</option>
+                        <option value="female-straight">Женщина, гетеросексуальная</option>
+                        <option value="male-homo">Мужчина, гомосексуальный</option>
+                        <option value="female-homo">Женщина, гомосексуальная</option>
+                        <option value="male-bi">Мужчина, бисексуальный</option>
+                        <option value="female-bi">Женщина, бисексуальная</option>
+                        <option value="non-binary">Другое</option>
                       </Select>
                   </FormLayout>
 
                   <Group header={<Header mode="secondary">Ваши предпочтения</Header>}>
                   <FormLayout>
-                      <Checkbox defaultChecked={user_global_api.preferences.indexOf("male-straight") === -1 ? false : true} onChange={this.handleCheckbox} name="male-straight">Мужчина Натурал</Checkbox>
-                      <Checkbox defaultChecked={user_global_api.preferences.indexOf("female-straight") === -1 ? false : true} onChange={this.handleCheckbox} name="female-straight">Женщина Натурал</Checkbox>
-                      <Checkbox defaultChecked={user_global_api.preferences.indexOf("male-homo") === -1 ? false : true} onChange={this.handleCheckbox} name="male-homo">Мужчина Гомосексуалист</Checkbox>
-                      <Checkbox defaultChecked={user_global_api.preferences.indexOf("female-homo") === -1 ? false : true} onChange={this.handleCheckbox} name="female-homo">Женщина Гомосексуалист</Checkbox>
-                      <Checkbox defaultChecked={user_global_api.preferences.indexOf("male-bi") === -1 ? false : true} onChange={this.handleCheckbox} name="male-bi">Мужчина Би</Checkbox>
-                      <Checkbox defaultChecked={user_global_api.preferences.indexOf("female-bi") === -1 ? false : true} onChange={this.handleCheckbox} name="female-bi">Женщина Би</Checkbox>
-                      <Checkbox defaultChecked={user_global_api.preferences.indexOf("non-binary") === -1 ? false : true} onChange={this.handleCheckbox} name="non-binary">Не бинарный</Checkbox>
+                      <Checkbox defaultChecked={user_global_api.preferences.indexOf("male-straight") === -1 ? false : true} onChange={this.handleCheckbox} name="male-straight">Мужчина, гетеросексуальный</Checkbox>
+                      <Checkbox defaultChecked={user_global_api.preferences.indexOf("female-straight") === -1 ? false : true} onChange={this.handleCheckbox} name="female-straight">Женщина, гетеросексуальная</Checkbox>
+                      <Checkbox defaultChecked={user_global_api.preferences.indexOf("male-homo") === -1 ? false : true} onChange={this.handleCheckbox} name="male-homo">Мужчина, гомосексуальный</Checkbox>
+                      <Checkbox defaultChecked={user_global_api.preferences.indexOf("female-homo") === -1 ? false : true} onChange={this.handleCheckbox} name="female-homo">Женщина, гомосексуальная</Checkbox>
+                      <Checkbox defaultChecked={user_global_api.preferences.indexOf("male-bi") === -1 ? false : true} onChange={this.handleCheckbox} name="male-bi">Мужчина, бисексуальный</Checkbox>
+                      <Checkbox defaultChecked={user_global_api.preferences.indexOf("female-bi") === -1 ? false : true} onChange={this.handleCheckbox} name="female-bi">Женщина, бисексуальная</Checkbox>
+                      <Checkbox defaultChecked={user_global_api.preferences.indexOf("non-binary") === -1 ? false : true} onChange={this.handleCheckbox} name="non-binary">Другое</Checkbox>
                   <Button mode="secondary" size="xl" onClick={() => { this.update_user_data() }} >Сохранить изменения</Button>
                   </FormLayout>
                   </Group>
@@ -784,26 +784,26 @@ class Example extends React.Component {
             </FormLayout>
 
             <FormLayout>
-              <Select name="sex" onChange={this.handleChange} top="Ваш гендер" >
-                <option value="male-straight">Мужчина Натурал</option>
-                <option value="female-straight">Женщина Натурал</option>
-                <option value="male-homo">Мужчина Гомосексуалист</option>
-                <option value="female-homo">Женщина Гомосексуалист</option>
-                <option value="male-bi">Мужчина Би</option>
-                <option value="female-bi">Женщина Би</option>
-                <option value="non-binary">Не бинарный</option>
+              <Select name="sex" onChange={this.handleChange} top="Укажите ваш пол и ориентацию" >
+                <option value="male-straight">Мужчина, гетеросексуальный</option>
+                <option value="female-straight">Женщина, гетеросексуальная</option>
+                <option value="male-homo">Мужчина, гомосексуальный</option>
+                <option value="female-homo">Женщина, гомосексуальная</option>
+                <option value="male-bi">Мужчина, бисексуальный</option>
+                <option value="female-bi">Женщина, бисексуальная</option>
+                <option value="non-binary">Другое</option>
               </Select>
           </FormLayout>
 
           <Group header={<Header mode="secondary">Ваши предпочтения</Header>}>
           <FormLayout>
-              <Checkbox onChange={this.handleCheckbox} name="male-straight">Мужчина Натурал</Checkbox>
-              <Checkbox onChange={this.handleCheckbox} name="female-straight">Женщина Натурал</Checkbox>
-              <Checkbox onChange={this.handleCheckbox} name="male-homo">Мужчина Гомосексуалист</Checkbox>
-              <Checkbox onChange={this.handleCheckbox} name="female-homo">Женщина Гомосексуалист</Checkbox>
-              <Checkbox onChange={this.handleCheckbox} name="male-bi">Мужчина Би</Checkbox>
-              <Checkbox onChange={this.handleCheckbox} name="female-bi">Женщина Би</Checkbox>
-              <Checkbox onChange={this.handleCheckbox} name="non-binary">Не бинарный</Checkbox>
+              <Checkbox onChange={this.handleCheckbox} name="male-straight">Мужчина, гетеросексуальный</Checkbox>
+              <Checkbox onChange={this.handleCheckbox} name="female-straight">Женщина, гетеросексуальная</Checkbox>
+              <Checkbox onChange={this.handleCheckbox} name="male-homo">Мужчина, гомосексуальный</Checkbox>
+              <Checkbox onChange={this.handleCheckbox} name="female-homo">Женщина, гомосексуальная</Checkbox>
+              <Checkbox onChange={this.handleCheckbox} name="male-bi">Мужчина, бисексуальный</Checkbox>
+              <Checkbox onChange={this.handleCheckbox} name="female-bi">Женщина, бисексуальная</Checkbox>
+              <Checkbox onChange={this.handleCheckbox} name="non-binary">Другое</Checkbox>
            <Button mode="secondary" onClick={() => { this.register_user(); }} size="xl">Продолжить</Button>
           </FormLayout>
           </Group>
